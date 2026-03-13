@@ -371,16 +371,13 @@ h2.title span{color:var(--r);}
 .transf-title span{color:var(--r);}
 .transf-carousel{overflow:hidden;position:relative;}
 .transf-track{display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1);}
-.transf-slide{min-width:100%;display:grid;grid-template-columns:1fr 1fr;gap:3px;}
-.transf-slide.solo{display:flex;justify-content:center;}
-.transf-slide.solo .transf-item{width:50%;}
+.transf-slide{flex:none;}
 .transf-item{position:relative;overflow:hidden;cursor:pointer;}
 .transf-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55) 0%,transparent 50%);opacity:0;transition:opacity .3s;}
 .transf-item:hover::after{opacity:1;}
 .transf-item img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;transition:transform .4s;}
 .transf-item:hover img{transform:scale(1.04);}
 @media(max-width:900px){.transf-s{padding:60px 24px;}}
-@media(max-width:600px){.transf-slide{grid-template-columns:1fr;}.transf-slide.solo .transf-item{width:100%;}}
 
 /* ── FAQ ── */
 .faq-s{background:var(--k2);}
@@ -690,25 +687,15 @@ footer{
   </div>
   <div class="transf-carousel rv" id="transfCarousel">
     <div class="transf-track" id="transfTrack">
-      <div class="transf-slide">
-        <div class="transf-item"><img src="1.png" alt="Transformação Caveira Team" loading="lazy"></div>
-        <div class="transf-item"><img src="2.png" alt="Transformação Caveira Team" loading="lazy"></div>
-      </div>
-      <div class="transf-slide">
-        <div class="transf-item"><img src="3.png" alt="Transformação Caveira Team" loading="lazy"></div>
-        <div class="transf-item"><img src="4.png" alt="Transformação Caveira Team" loading="lazy"></div>
-      </div>
-      <div class="transf-slide">
-        <div class="transf-item"><img src="5.png" alt="Transformação Caveira Team" loading="lazy"></div>
-        <div class="transf-item"><img src="6.png" alt="Transformação Caveira Team" loading="lazy"></div>
-      </div>
-      <div class="transf-slide">
-        <div class="transf-item"><img src="7.png" alt="Transformação Caveira Team" loading="lazy"></div>
-        <div class="transf-item"><img src="8.png" alt="Transformação Caveira Team" loading="lazy"></div>
-      </div>
-      <div class="transf-slide solo">
-        <div class="transf-item"><img src="9.png" alt="Transformação Caveira Team" loading="lazy"></div>
-      </div>
+      <div class="transf-slide"><div class="transf-item"><img src="1.png" alt="Transformação Caveira Team" loading="lazy"></div></div>
+      <div class="transf-slide"><div class="transf-item"><img src="2.png" alt="Transformação Caveira Team" loading="lazy"></div></div>
+      <div class="transf-slide"><div class="transf-item"><img src="3.png" alt="Transformação Caveira Team" loading="lazy"></div></div>
+      <div class="transf-slide"><div class="transf-item"><img src="4.png" alt="Transformação Caveira Team" loading="lazy"></div></div>
+      <div class="transf-slide"><div class="transf-item"><img src="5.png" alt="Transformação Caveira Team" loading="lazy"></div></div>
+      <div class="transf-slide"><div class="transf-item"><img src="6.png" alt="Transformação Caveira Team" loading="lazy"></div></div>
+      <div class="transf-slide"><div class="transf-item"><img src="7.png" alt="Transformação Caveira Team" loading="lazy"></div></div>
+      <div class="transf-slide"><div class="transf-item"><img src="8.png" alt="Transformação Caveira Team" loading="lazy"></div></div>
+      <div class="transf-slide"><div class="transf-item"><img src="9.png" alt="Transformação Caveira Team" loading="lazy"></div></div>
     </div>
   </div>
   <div class="depo-controls" style="margin-top:20px;">
@@ -965,45 +952,96 @@ footer{
 
 /* ── CARROSSEL TRANSFORMAÇÕES ── */
 (function(){
-  const track = document.getElementById('transfTrack');
-  const slides = track ? track.querySelectorAll('.transf-slide') : [];
-  const dotsContainer = document.getElementById('transfDots');
-  const prevBtn = document.getElementById('transfPrev');
-  const nextBtn = document.getElementById('transfNext');
-  const pauseBtn = document.getElementById('transfPause');
+  var carousel = document.getElementById('transfCarousel');
+  var track = document.getElementById('transfTrack');
+  var slides = track ? track.querySelectorAll('.transf-slide') : [];
+  var dotsContainer = document.getElementById('transfDots');
+  var prevBtn = document.getElementById('transfPrev');
+  var nextBtn = document.getElementById('transfNext');
+  var pauseBtn = document.getElementById('transfPause');
   if(!track || !slides.length) return;
 
-  let current = 0, timer = null, paused = false;
-  const total = slides.length;
+  var total = slides.length; // 9 slides individuais
+  var current = 0, timer = null, paused = false;
+  var perPage = 2, totalPages = 5;
+  var dots = [];
 
-  // criar dots
-  slides.forEach((_,i)=>{
-    const d = document.createElement('span');
-    d.className = 'depo-dot' + (i===0?' active':'');
-    d.addEventListener('click',()=>{ goTo(i); resetAuto(); });
-    dotsContainer.appendChild(d);
-  });
+  function isMobile(){ return window.innerWidth <= 600; }
+
+  function buildDots(){
+    perPage = isMobile() ? 1 : 2;
+    totalPages = Math.ceil(total / perPage);
+    dotsContainer.innerHTML = '';
+    dots = [];
+    for(var i = 0; i < totalPages; i++){
+      var d = document.createElement('span');
+      d.className = 'depo-dot' + (i === 0 ? ' active' : '');
+      d.dataset.index = i;
+      (function(idx){ d.addEventListener('click', function(){ goTo(idx); resetAuto(); }); })(i);
+      dotsContainer.appendChild(d);
+      dots.push(d);
+    }
+  }
+
+  function updateDots(){
+    dots.forEach(function(d,i){ d.classList.toggle('active', i === current); });
+  }
+
+  function setSizes(){
+    var w = carousel.offsetWidth;
+    var slideW = w / perPage;
+    slides.forEach(function(s){ s.style.width = slideW + 'px'; });
+    if(current >= totalPages){ current = totalPages - 1; }
+    track.style.transform = 'translateX(-' + (current * w) + 'px)';
+    updateDots();
+  }
 
   function goTo(n){
-    current = (n + total) % total;
-    track.style.transform = `translateX(-${current * 100}%)`;
-    dotsContainer.querySelectorAll('.depo-dot').forEach((d,i)=>d.classList.toggle('active', i===current));
+    current = (n + totalPages) % totalPages;
+    var w = carousel.offsetWidth;
+    track.style.transform = 'translateX(-' + (current * w) + 'px)';
+    updateDots();
   }
-  function next(){ goTo(current+1); }
-  function prev(){ goTo(current-1); }
-  function startAuto(){ timer = setInterval(next, 5000); }
-  function stopAuto(){ clearInterval(timer); }
+
+  function next(){ goTo(current + 1); }
+  function prev(){ goTo(current - 1); }
+  function startAuto(){ clearInterval(timer); timer = setInterval(next, 5000); }
+  function stopAuto(){ clearInterval(timer); timer = null; }
   function resetAuto(){ if(!paused){ stopAuto(); startAuto(); } }
 
-  prevBtn.addEventListener('click',()=>{ prev(); resetAuto(); });
-  nextBtn.addEventListener('click',()=>{ next(); resetAuto(); });
-  pauseBtn.addEventListener('click',()=>{
-    paused = !paused;
-    if(paused){ stopAuto(); pauseBtn.innerHTML='▶ RETOMAR'; }
-    else{ startAuto(); pauseBtn.innerHTML='⏸ PAUSAR'; }
+  buildDots();
+  setSizes();
+
+  window.addEventListener('resize', function(){
+    var prevPerPage = perPage;
+    buildDots();
+    if(perPage !== prevPerPage){ current = 0; }
+    setSizes();
   });
 
-  startAuto();
+  prevBtn.addEventListener('click', function(){ prev(); resetAuto(); });
+  nextBtn.addEventListener('click', function(){ next(); resetAuto(); });
+  pauseBtn.addEventListener('click', function(){
+    paused = !paused;
+    if(paused){ stopAuto(); pauseBtn.innerHTML = '▶ RETOMAR'; }
+    else{ startAuto(); pauseBtn.innerHTML = '⏸ PAUSAR'; }
+  });
+
+  // Autoplay só começa quando a seção entra na tela
+  if('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          if(!paused) startAuto();
+        } else {
+          stopAuto();
+        }
+      });
+    }, { threshold: 0.3 });
+    observer.observe(carousel);
+  } else {
+    startAuto();
+  }
 })();
 </script>
 
