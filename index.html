@@ -336,7 +336,7 @@ h2.title span{color:var(--r);}
 .depo-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:52px;flex-wrap:wrap;gap:24px;}
 .depo-carousel{position:relative;overflow:hidden;width:100%;}
 .depo-track{display:flex;transition:transform .5s ease;}
-.depo-slide{display:grid;grid-template-columns:1fr 1fr;gap:2px;flex:none;}
+.depo-slide{flex:none;}
 .dc{
   background:var(--k2);padding:40px 32px;
   border-top:2px solid transparent;
@@ -362,7 +362,6 @@ h2.title span{color:var(--r);}
 .depo-dots{display:flex;gap:6px;align-items:center;}
 .depo-dot{width:6px;height:6px;background:var(--k4);border-radius:50%;cursor:pointer;transition:background .2s,transform .2s;}
 .depo-dot.active{background:var(--r);transform:scale(1.4);}
-@media(max-width:700px){.depo-slide{grid-template-columns:1fr;}}
 
 /* ── TRANSFORMAÇÕES ── */
 .transf-s{background:var(--k2);padding:88px 80px;}
@@ -781,7 +780,6 @@ footer{
     </div>
     <div class="depo-carousel" id="depoCarousel">
       <div class="depo-track" id="depoTrack">
-        <!-- Slide 1 -->
         <div class="depo-slide">
           <div class="dc">
             <div class="dc-stars">★★★★★</div>
@@ -792,6 +790,8 @@ footer{
               <div class="dc-badge">Definida 💀</div>
             </div>
           </div>
+        </div>
+        <div class="depo-slide">
           <div class="dc">
             <div class="dc-stars">★★★★★</div>
             <p class="dc-text">"Hoje me sinto mais forte, mais leve e mais eu. Você acreditou em mim mesmo quando eu duvidava, entendeu meu ritmo e celebrou cada pequena conquista. <strong>Transformei cansaço em força e rotina em evolução.</strong>"</p>
@@ -802,7 +802,6 @@ footer{
             </div>
           </div>
         </div>
-        <!-- Slide 2 -->
         <div class="depo-slide">
           <div class="dc">
             <div class="dc-stars">★★★★★</div>
@@ -813,6 +812,8 @@ footer{
               <div class="dc-badge">9/10 evolução 💀</div>
             </div>
           </div>
+        </div>
+        <div class="depo-slide">
           <div class="dc">
             <div class="dc-stars">★★★★★</div>
             <p class="dc-text">"Passei a gostar de treinar. Não vou por obrigação, vou porque gosto. Braço mais firme, cintura afinada, menos flácida. <strong>Mudou praticamente tudo. Inclusive a minha cabeça.</strong>"</p>
@@ -823,7 +824,6 @@ footer{
             </div>
           </div>
         </div>
-        <!-- Slide 3 -->
         <div class="depo-slide">
           <div class="dc">
             <div class="dc-stars">★★★★★</div>
@@ -834,6 +834,8 @@ footer{
               <div class="dc-badge">8/10 shape 💀</div>
             </div>
           </div>
+        </div>
+        <div class="depo-slide">
           <div class="dc">
             <div class="dc-stars">★★★★★</div>
             <p class="dc-text">"Me sentia estagnada, meu peso não alterava, não via resultado. Depois que entrei no time, tudo mudou. <strong>Força 10/10, corpo modelando, e agora sei exatamente o que estou fazendo.</strong> Escolhi os profissionais certos."</p>
@@ -844,7 +846,6 @@ footer{
             </div>
           </div>
         </div>
-        <!-- Slide 4 -->
         <div class="depo-slide">
           <div class="dc">
             <div class="dc-stars">★★★★★</div>
@@ -855,6 +856,8 @@ footer{
               <div class="dc-badge">Desinchada 💀</div>
             </div>
           </div>
+        </div>
+        <div class="depo-slide">
           <div class="dc">
             <div class="dc-stars">★★★★★</div>
             <p class="dc-text">"4 anos treinando sem ver diferença real. Em 45 dias com o Método Caveira, pela primeira vez vi uma diferença notável na minha composição corporal. <strong>Ganhei 1kg e mesmo assim não me sinto mal, pelo contrário, estou super feliz com o processo.</strong>"</p>
@@ -869,12 +872,7 @@ footer{
     </div>
     <div class="depo-controls">
       <button class="depo-btn" id="depoPrev" aria-label="Anterior">&#8592;</button>
-      <div class="depo-dots" id="depoDots">
-        <span class="depo-dot active" data-index="0"></span>
-        <span class="depo-dot" data-index="1"></span>
-        <span class="depo-dot" data-index="2"></span>
-        <span class="depo-dot" data-index="3"></span>
-      </div>
+      <div class="depo-dots" id="depoDots"></div>
       <button class="depo-btn" id="depoNext" aria-label="Próximo">&#8594;</button>
       <button class="depo-pause" id="depoPause">⏸ Pausar</button>
     </div>
@@ -885,24 +883,54 @@ footer{
   const carousel = document.getElementById('depoCarousel');
   const track = document.getElementById('depoTrack');
   const slides = document.querySelectorAll('.depo-slide');
-  const dots = document.querySelectorAll('.depo-dot');
+  const dotsContainer = document.getElementById('depoDots');
   const pauseBtn = document.getElementById('depoPause');
-  const total = slides.length;
+  const total = slides.length; // 8 slides individuais
   let current = 0;
   let paused = false;
   let timer;
+  let perPage = 2;
+  let totalPages = 4;
+  let dots = [];
+
+  function isMobile(){ return window.innerWidth <= 700; }
+
+  function buildDots(){
+    perPage = isMobile() ? 1 : 2;
+    totalPages = total / perPage;
+    dotsContainer.innerHTML = '';
+    dots = [];
+    for(var i = 0; i < totalPages; i++){
+      var dot = document.createElement('span');
+      dot.className = 'depo-dot' + (i === 0 ? ' active' : '');
+      dot.dataset.index = i;
+      dot.addEventListener('click', function(){
+        goTo(parseInt(this.dataset.index));
+        if(!paused){ startAuto(); }
+      });
+      dotsContainer.appendChild(dot);
+      dots.push(dot);
+    }
+  }
+
+  function updateDots(){
+    dots.forEach(function(d,i){ d.classList.toggle('active', i === current); });
+  }
 
   function setSizes(){
-    const w = carousel.offsetWidth;
-    slides.forEach(function(s){ s.style.width = w + 'px'; });
+    var w = carousel.offsetWidth;
+    var slideW = w / perPage;
+    slides.forEach(function(s){ s.style.width = slideW + 'px'; });
+    if(current >= totalPages){ current = totalPages - 1; }
     track.style.transform = 'translateX(-' + (current * w) + 'px)';
+    updateDots();
   }
 
   function goTo(index){
-    current = (index + total) % total;
-    const w = carousel.offsetWidth;
+    current = (index + totalPages) % totalPages;
+    var w = carousel.offsetWidth;
     track.style.transform = 'translateX(-' + (current * w) + 'px)';
-    dots.forEach(function(d,i){ d.classList.toggle('active', i === current); });
+    updateDots();
   }
 
   function next(){ goTo(current + 1); }
@@ -913,18 +941,18 @@ footer{
     timer = setInterval(next, 5000);
   }
 
+  buildDots();
   setSizes();
-  window.addEventListener('resize', setSizes);
+
+  window.addEventListener('resize', function(){
+    var prevPerPage = perPage;
+    buildDots();
+    if(perPage !== prevPerPage){ current = 0; }
+    setSizes();
+  });
 
   document.getElementById('depoNext').addEventListener('click', function(){ next(); if(!paused){ startAuto(); } });
   document.getElementById('depoPrev').addEventListener('click', function(){ prev(); if(!paused){ startAuto(); } });
-
-  dots.forEach(function(dot){
-    dot.addEventListener('click', function(){
-      goTo(parseInt(this.dataset.index));
-      if(!paused){ startAuto(); }
-    });
-  });
 
   pauseBtn.addEventListener('click', function(){
     paused = !paused;
