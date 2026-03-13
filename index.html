@@ -35,7 +35,6 @@ nav{
   backdrop-filter:blur(12px);
 }
 .nav-logo{display:flex;align-items:center;}
-.nav-logo svg{height:30px;width:auto;}
 .nav-right{display:flex;align-items:center;gap:32px;}
 .nav-link{font-family:var(--f-cond);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--w2);text-decoration:none;transition:color .15s;}
 .nav-link:hover{color:var(--w);}
@@ -47,6 +46,22 @@ nav{
   white-space:nowrap;
 }
 .nav-cta:hover{background:var(--rb);transform:translateY(-1px);}
+/* hambúrguer */
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0;}
+.nav-burger span{display:block;height:2px;background:var(--w);border-radius:2px;transition:transform .25s,opacity .25s;}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-burger.open span:nth-child(2){opacity:0;}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+/* menu mobile */
+.nav-mobile{
+  display:none;position:fixed;top:64px;left:0;right:0;z-index:499;
+  background:rgba(8,8,8,.97);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--k4);
+  flex-direction:column;padding:24px 24px 32px;gap:0;
+}
+.nav-mobile.open{display:flex;}
+.nav-mobile .nav-link{font-size:14px;letter-spacing:4px;padding:16px 0;border-bottom:1px solid var(--k4);}
+.nav-mobile .nav-cta{margin-top:20px;text-align:center;padding:16px;font-size:13px;}
 
 /* ── HERO ── */
 .hero{
@@ -391,6 +406,11 @@ footer{
 .d1{transition-delay:.12s;}.d2{transition-delay:.24s;}.d3{transition-delay:.36s;}
 
 /* ── RESPONSIVE ── */
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .nav-right{display:none;}
+  .nav-burger{display:flex;}
+}
 @media(max-width:1024px){
   nav{padding:0 20px;}
   .hero{grid-template-columns:1fr;}
@@ -419,7 +439,14 @@ footer{
     <a href="#metodo" class="nav-link">Método</a>
     <a href="https://wa.me/5581997660500?text=Ol%C3%A1%2C%20quero%20entrar%20no%20Caveira%20Team!" class="nav-cta" target="_blank" rel="noopener noreferrer">💀 Entrar no Caveira Team</a>
   </div>
+  <button class="nav-burger" id="navBurger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="#metodo" class="nav-link">Método</a>
+  <a href="https://wa.me/5581997660500?text=Ol%C3%A1%2C%20quero%20entrar%20no%20Caveira%20Team!" class="nav-cta" target="_blank" rel="noopener noreferrer">💀 Entrar no Caveira Team</a>
+</div>
 
 <!-- ══════════════════════════════════════════
      HERO
@@ -796,6 +823,20 @@ document.querySelectorAll('.fq-h').forEach(h => {
       item.classList.add('open');
       item.querySelector('.fq-a').style.maxHeight = item.querySelector('.fq-a').scrollHeight + 'px';
     }
+  });
+});
+
+// HAMBÚRGUER
+const burger = document.getElementById('navBurger');
+const navMobile = document.getElementById('navMobile');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  navMobile.classList.toggle('open');
+});
+navMobile.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    navMobile.classList.remove('open');
   });
 });
 
