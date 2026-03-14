@@ -31,7 +31,6 @@
   .cta-section h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 8vw, 56px); color: #F0EDE8; line-height: 1; margin-bottom: 8px; }
   .cta-section h2 span { color: #C8102E; }
   .cta-section p { font-size: 15px; color: #666; margin-bottom: 32px; }
-
   .btn-download {
     display: inline-block;
     font-family: 'Bebas Neue', sans-serif;
@@ -54,51 +53,50 @@
     pointer-events: auto;
   }
   .btn-download.unlocked:hover { background: #a50e26; }
-
-  .progress-bar-wrap {
-    max-width: 340px;
-    margin: 0 auto 12px;
-    height: 3px;
-    background: #1a1a1a;
-  }
-  .progress-bar-fill {
-    height: 3px;
-    background: #C8102E;
-    width: 0%;
-    transition: width 1s linear;
-  }
-  .watch-hint {
-    font-family: 'Barlow', sans-serif;
-    font-size: 13px;
-    color: #555;
-    margin-bottom: 24px;
-    letter-spacing: 1px;
-  }
+  .progress-bar-wrap { max-width: 340px; margin: 0 auto 12px; height: 3px; background: #1a1a1a; }
+  .progress-bar-fill { height: 3px; background: #C8102E; width: 0%; transition: width 1s linear; }
+  .watch-hint { font-family: 'Barlow', sans-serif; font-size: 13px; color: #555; margin-bottom: 24px; letter-spacing: 1px; }
   .watch-hint span { color: #C8102E; }
   .free-tag { font-family: 'Barlow', sans-serif; font-size: 13px; color: #444; margin-top: 16px; letter-spacing: 2px; text-transform: uppercase; }
   .divider { width: 40px; height: 2px; background: #C8102E; margin: 0 auto 32px; }
 
-  /* Banner WebView */
-  .webview-banner {
-    display: none;
-    background: #C8102E;
-    color: #F0EDE8;
-    padding: 16px 24px;
+  footer {
+    padding: 32px 24px;
+    background: #0A0A0A;
     text-align: center;
-    font-family: 'Barlow', sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
+    border-top: 1px solid #141414;
   }
-  .webview-banner strong {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px;
-    display: block;
+  footer .footer-copy {
+    font-size: 12px;
+    color: #333;
     letter-spacing: 2px;
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+  .webview-footer-banner {
+    display: none;
+    margin-bottom: 20px;
+    background: #C8102E;
+    padding: 16px 20px;
+    text-align: center;
+  }
+  .webview-footer-banner.visible { display: block; }
+  .webview-footer-banner strong {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    display: block;
+    color: #F0EDE8;
     margin-bottom: 4px;
   }
-  .webview-banner.visible { display: block; }
+  .webview-footer-banner p {
+    font-size: 13px;
+    color: rgba(240,237,232,0.8);
+    line-height: 1.5;
+  }
 
-  /* Modal WebView */
+  /* Modal */
   .modal-overlay {
     display: none;
     position: fixed;
@@ -110,82 +108,26 @@
     padding: 24px;
   }
   .modal-overlay.visible { display: flex; }
-  .modal-box {
-    background: #111;
-    border: 1px solid #C8102E;
-    padding: 40px 32px;
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
-  }
+  .modal-box { background: #111; border: 1px solid #C8102E; padding: 40px 32px; max-width: 400px; width: 100%; text-align: center; }
   .modal-box .skull-big { font-size: 40px; margin-bottom: 16px; }
-  .modal-box h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    color: #F0EDE8;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-  }
-  .modal-box p {
-    font-size: 14px;
-    color: #888;
-    line-height: 1.7;
-    margin-bottom: 24px;
-  }
-  .modal-box p strong { color: #F0EDE8; }
-  .modal-steps {
-    text-align: left;
-    margin-bottom: 28px;
-  }
-  .modal-step {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-  .modal-step-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px;
-    color: #C8102E;
-    min-width: 24px;
-  }
-  .modal-step-text {
-    font-size: 13px;
-    color: #888;
-    line-height: 1.5;
-  }
+  .modal-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: #F0EDE8; letter-spacing: 2px; margin-bottom: 12px; }
+  .modal-box p { font-size: 14px; color: #888; line-height: 1.7; margin-bottom: 24px; }
+  .modal-steps { text-align: left; margin-bottom: 28px; }
+  .modal-step { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+  .modal-step-num { font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: #C8102E; min-width: 24px; }
+  .modal-step-text { font-size: 13px; color: #888; line-height: 1.5; }
   .modal-step-text strong { color: #F0EDE8; }
-  .btn-modal-close {
-    display: inline-block;
-    background: transparent;
-    border: 1px solid #333;
-    color: #555;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 14px;
-    letter-spacing: 2px;
-    padding: 10px 28px;
-    cursor: pointer;
-    text-transform: uppercase;
-  }
-
-  footer { padding: 24px; background: #0A0A0A; text-align: center; border-top: 1px solid #141414; }
-  footer p { font-size: 12px; color: #333; letter-spacing: 2px; font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; }
+  .btn-modal-close { display: inline-block; background: transparent; border: 1px solid #333; color: #555; font-family: 'Barlow Condensed', sans-serif; font-size: 14px; letter-spacing: 2px; padding: 10px 28px; cursor: pointer; text-transform: uppercase; }
 </style>
 </head>
 <body>
 
-<!-- Banner topo WebView -->
-<div class="webview-banner" id="webview-banner">
-  <strong>⚠️ ABRE NO NAVEGADOR</strong>
-  Para baixar o ebook, toca nos 3 pontos (⋮) e escolhe <strong>"Abrir no navegador"</strong>
-</div>
-
-<!-- Modal WebView ao clicar no botão -->
+<!-- Modal WebView -->
 <div class="modal-overlay" id="modal-webview">
   <div class="modal-box">
     <div class="skull-big">💀</div>
     <h3>ABRE NO NAVEGADOR</h3>
-    <p>O download não funciona dentro do Instagram.<br>Faz assim:</p>
+    <p>O download não funciona dentro do Instagram.<br>Faz assim e o download começa na hora:</p>
     <div class="modal-steps">
       <div class="modal-step">
         <div class="modal-step-num">01</div>
@@ -197,7 +139,7 @@
       </div>
       <div class="modal-step">
         <div class="modal-step-num">03</div>
-        <div class="modal-step-text">Clica no botão de download normalmente</div>
+        <div class="modal-step-text">O <strong>download começa automaticamente</strong> — sem precisar esperar de novo</div>
       </div>
     </div>
     <button class="btn-modal-close" onclick="document.getElementById('modal-webview').classList.remove('visible')">FECHAR</button>
@@ -263,40 +205,48 @@
 <section class="cta-section">
   <div class="cta-inner">
     <h2>BAIXA<br><span>AGORA</span></h2>
-
     <div class="progress-bar-wrap">
       <div class="progress-bar-fill" id="progress-fill"></div>
     </div>
-
     <div class="watch-hint" id="watch-hint">
       Assiste pelo menos <span id="counter">30</span>s do vídeo para liberar o download
     </div>
-
     <a id="btn-download" class="btn-download" href="https://drive.google.com/uc?export=download&id=1uDNHJpwC6Mmn8cot17O80lvOXudkuj98">
       LIBERA EM <span id="btn-counter">30</span>S
     </a>
-
     <div class="free-tag">💀 Método Caveira — Desperte o Caos</div>
   </div>
 </section>
 
 <footer>
-  <p>© Caveira Team · Todos os direitos reservados</p>
+  <div class="webview-footer-banner" id="webview-footer-banner">
+    <strong>⚠️ DOWNLOAD NÃO FUNCIONA AQUI</strong>
+    <p>Toca nos 3 pontos (⋮) e escolhe <strong>"Abrir no navegador"</strong> — o download começa automaticamente.</p>
+  </div>
+  <p class="footer-copy">© Caveira Team · Todos os direitos reservados</p>
 </footer>
 
 <script>
   var REQUIRED = 30;
+  var EBOOK_URL = 'https://drive.google.com/uc?export=download&id=1uDNHJpwC6Mmn8cot17O80lvOXudkuj98';
   var watched = 0;
   var interval = null;
   var player = null;
   var unlocked = false;
 
-  // Detecta WebView do Instagram/Facebook
   var ua = navigator.userAgent || '';
   var isWebView = /Instagram|FBAN|FBAV|FB_IAB|Line|Twitter|LinkedIn/i.test(ua);
 
+  // Se vier do navegador e já tinha assistido os 30s antes (veio do WebView)
+  try {
+    if (localStorage.getItem('caveira_unlocked') === '1') {
+      unlocked = true;
+      watched = REQUIRED;
+    }
+  } catch(e) {}
+
   if (isWebView) {
-    document.getElementById('webview-banner').classList.add('visible');
+    document.getElementById('webview-footer-banner').classList.add('visible');
   }
 
   function updateUI() {
@@ -313,6 +263,7 @@
 
   function unlock() {
     unlocked = true;
+    try { localStorage.setItem('caveira_unlocked', '1'); } catch(e) {}
     var btn = document.getElementById('btn-download');
     btn.classList.add('unlocked');
     btn.textContent = 'BAIXAR EBOOK GRÁTIS';
@@ -320,6 +271,15 @@
     document.getElementById('watch-hint').style.color = '#C8102E';
     document.getElementById('progress-fill').style.width = '100%';
     if (interval) clearInterval(interval);
+  }
+
+  // Se já estava desbloqueado ao carregar a página, aplica UI imediatamente
+  if (unlocked) {
+    unlock();
+    // Se veio do navegador com desbloqueio salvo, dispara download automaticamente
+    if (!isWebView) {
+      window.location.href = EBOOK_URL;
+    }
   }
 
   function startCounting() {
@@ -336,13 +296,9 @@
   }
 
   function stopCounting() {
-    if (interval) {
-      clearInterval(interval);
-      interval = null;
-    }
+    if (interval) { clearInterval(interval); interval = null; }
   }
 
-  // Intercepta clique no botão se WebView
   document.getElementById('btn-download').addEventListener('click', function(e) {
     if (isWebView) {
       e.preventDefault();
@@ -354,11 +310,8 @@
     player = new YT.Player('yt-player', {
       events: {
         onStateChange: function(e) {
-          if (e.data === YT.PlayerState.PLAYING) {
-            startCounting();
-          } else {
-            stopCounting();
-          }
+          if (e.data === YT.PlayerState.PLAYING) { startCounting(); }
+          else { stopCounting(); }
         }
       }
     });
