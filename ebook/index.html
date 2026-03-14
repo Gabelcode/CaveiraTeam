@@ -31,8 +31,52 @@
   .cta-section h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 8vw, 56px); color: #F0EDE8; line-height: 1; margin-bottom: 8px; }
   .cta-section h2 span { color: #C8102E; }
   .cta-section p { font-size: 15px; color: #666; margin-bottom: 32px; }
-  .btn-download { display: inline-block; background: #C8102E; color: #F0EDE8; font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px; padding: 18px 48px; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s; }
-  .btn-download:hover { background: #a50e26; }
+
+  .btn-download {
+    display: inline-block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    padding: 18px 48px;
+    text-decoration: none;
+    border: none;
+    cursor: not-allowed;
+    transition: background 0.3s, color 0.3s;
+    background: #1a1a1a;
+    color: #444;
+    pointer-events: none;
+    user-select: none;
+  }
+  .btn-download.unlocked {
+    background: #C8102E;
+    color: #F0EDE8;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+  .btn-download.unlocked:hover { background: #a50e26; }
+
+  .progress-bar-wrap {
+    max-width: 340px;
+    margin: 0 auto 12px;
+    height: 3px;
+    background: #1a1a1a;
+  }
+  .progress-bar-fill {
+    height: 3px;
+    background: #C8102E;
+    width: 0%;
+    transition: width 1s linear;
+  }
+
+  .watch-hint {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+  }
+  .watch-hint span { color: #C8102E; }
+
   .free-tag { font-family: 'Barlow', sans-serif; font-size: 13px; color: #444; margin-top: 16px; letter-spacing: 2px; text-transform: uppercase; }
   .divider { width: 40px; height: 2px; background: #C8102E; margin: 0 auto 32px; }
   footer { padding: 24px; background: #0A0A0A; text-align: center; border-top: 1px solid #141414; }
@@ -53,7 +97,8 @@
     <div class="video-label">Assiste antes de baixar</div>
     <div class="video-container">
       <iframe
-        src="https://www.youtube.com/embed/wexJYfLFQfc"
+        id="yt-player"
+        src="https://www.youtube.com/embed/wexJYfLFQfc?enablejsapi=1"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
       </iframe>
@@ -99,8 +144,19 @@
 <section class="cta-section">
   <div class="cta-inner">
     <h2>BAIXA<br><span>AGORA</span></h2>
-    <p>Gratuito. Sem enrolação. Sem motivação vazia.</p>
-    <a href="https://drive.google.com/uc?export=download&id=1uDNHJpwC6Mmn8cot17O80lvOXudkuj98" class="btn-download" download>BAIXAR EBOOK GRÁTIS</a>
+
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="watch-hint" id="watch-hint">
+      Assiste pelo menos <span id="counter">30</span>s do vídeo para liberar o download
+    </div>
+
+    <a id="btn-download" class="btn-download" href="https://drive.google.com/uc?export=download&id=1uDNHJpwC6Mmn8cot17O80lvOXudkuj98">
+      LIBERA EM <span id="btn-counter">30</span>S
+    </a>
+
     <div class="free-tag">💀 Método Caveira — Desperte o Caos</div>
   </div>
 </section>
@@ -108,6 +164,77 @@
 <footer>
   <p>© Caveira Team · Todos os direitos reservados</p>
 </footer>
+
+<script>
+  var REQUIRED = 30;
+  var watched = 0;
+  var interval = null;
+  var player = null;
+  var unlocked = false;
+
+  function updateUI() {
+    var remaining = Math.max(0, REQUIRED - Math.floor(watched));
+    var pct = Math.min(100, (watched / REQUIRED) * 100);
+
+    document.getElementById('progress-fill').style.width = pct + '%';
+
+    if (remaining > 0) {
+      document.getElementById('counter').textContent = remaining;
+      document.getElementById('btn-counter').textContent = remaining;
+    } else if (!unlocked) {
+      unlock();
+    }
+  }
+
+  function unlock() {
+    unlocked = true;
+    var btn = document.getElementById('btn-download');
+    btn.classList.add('unlocked');
+    btn.textContent = 'BAIXAR EBOOK GRÁTIS';
+    document.getElementById('watch-hint').innerHTML = '✔ Pronto. O download está liberado.';
+    document.getElementById('watch-hint').style.color = '#C8102E';
+    document.getElementById('progress-fill').style.width = '100%';
+    if (interval) clearInterval(interval);
+  }
+
+  function startCounting() {
+    if (unlocked) return;
+    if (interval) return;
+    interval = setInterval(function() {
+      watched += 1;
+      updateUI();
+      if (watched >= REQUIRED) {
+        clearInterval(interval);
+        interval = null;
+      }
+    }, 1000);
+  }
+
+  function stopCounting() {
+    if (interval) {
+      clearInterval(interval);
+      interval = null;
+    }
+  }
+
+  window.onYouTubeIframeAPIReady = function() {
+    player = new YT.Player('yt-player', {
+      events: {
+        onStateChange: function(e) {
+          if (e.data === YT.PlayerState.PLAYING) {
+            startCounting();
+          } else {
+            stopCounting();
+          }
+        }
+      }
+    });
+  };
+
+  var tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(tag);
+</script>
 
 </body>
 </html>
