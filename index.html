@@ -3,222 +3,1161 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ebook Caveira Team</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Gabriel Araújo · Caveira Team</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💀</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0A0A0A; color: #F0EDE8; font-family: 'Barlow', sans-serif; }
-  .hero { background: #0A0A0A; padding: 60px 24px 40px; text-align: center; border-bottom: 1px solid #1a1a1a; }
-  .skull { font-size: 32px; letter-spacing: 8px; margin-bottom: 16px; }
-  .brand { font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 6px; color: #C8102E; margin-bottom: 24px; }
-  .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 10vw, 80px); line-height: 0.95; color: #F0EDE8; margin-bottom: 12px; }
-  .hero h1 span { color: #C8102E; }
-  .hero p { font-family: 'Barlow', sans-serif; font-size: clamp(15px, 3vw, 18px); color: #888; max-width: 540px; margin: 16px auto 0; line-height: 1.6; }
-  .video-section { padding: 48px 24px; background: #0D0D0D; }
-  .video-wrapper { max-width: 700px; margin: 0 auto; }
-  .video-label { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; letter-spacing: 4px; color: #C8102E; text-transform: uppercase; margin-bottom: 16px; text-align: center; }
-  .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 1px solid #1e1e1e; }
-  .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-  .benefits { padding: 48px 24px; background: #0A0A0A; }
-  .benefits-inner { max-width: 600px; margin: 0 auto; }
-  .section-label { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; letter-spacing: 4px; color: #C8102E; text-transform: uppercase; margin-bottom: 24px; text-align: center; }
-  .benefit-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; padding: 20px; border: 1px solid #1a1a1a; background: #0f0f0f; }
-  .benefit-icon { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: #C8102E; min-width: 36px; }
-  .benefit-text h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 17px; font-weight: 700; color: #F0EDE8; letter-spacing: 1px; margin-bottom: 4px; text-transform: uppercase; }
-  .benefit-text p { font-size: 14px; color: #666; line-height: 1.5; }
-  .cta-section { padding: 56px 24px; background: #0D0D0D; text-align: center; }
-  .cta-inner { max-width: 500px; margin: 0 auto; }
-  .cta-section h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 8vw, 56px); color: #F0EDE8; line-height: 1; margin-bottom: 8px; }
-  .cta-section h2 span { color: #C8102E; }
-  .cta-section p { font-size: 15px; color: #666; margin-bottom: 32px; }
-  .btn-download {
-    display: inline-block;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 3px;
-    padding: 18px 48px;
-    text-decoration: none;
-    border: none;
-    cursor: not-allowed;
-    transition: background 0.3s, color 0.3s;
-    background: #1a1a1a;
-    color: #444;
-    pointer-events: none;
-    user-select: none;
-  }
-  .btn-download.unlocked {
-    background: #C8102E;
-    color: #F0EDE8;
-    cursor: pointer;
-    pointer-events: auto;
-  }
-  .btn-download.unlocked:hover { background: #a50e26; }
-  .progress-bar-wrap { max-width: 340px; margin: 0 auto 12px; height: 3px; background: #1a1a1a; }
-  .progress-bar-fill { height: 3px; background: #C8102E; width: 0%; transition: width 1s linear; }
-  .watch-hint { font-family: 'Barlow', sans-serif; font-size: 13px; color: #555; margin-bottom: 24px; letter-spacing: 1px; }
-  .watch-hint span { color: #C8102E; }
-  .free-tag { font-family: 'Barlow', sans-serif; font-size: 13px; color: #444; margin-top: 16px; letter-spacing: 2px; text-transform: uppercase; }
-  .divider { width: 40px; height: 2px; background: #C8102E; margin: 0 auto 32px; }
+:root{
+  --r:#CC0000;--rb:#E8000A;--rd:#8B0000;
+  --k:#080808;--k2:#0D0D0D;--k3:#111;--k4:#181818;--k5:#1F1F1F;
+  --w:#F0EDE8;--w2:#B0ADA8;--w3:#5A5855;
+  --f-head:'Bebas Neue',sans-serif;
+  --f-cond:'Barlow Condensed',sans-serif;
+  --f-body:'Barlow',sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{background:var(--k);color:var(--w);font-family:var(--f-body);overflow-x:hidden;cursor:default;}
 
-  footer {
-    padding: 32px 24px;
-    background: #0A0A0A;
-    text-align: center;
-    border-top: 1px solid #141414;
-  }
-  footer .footer-copy {
-    font-size: 12px;
-    color: #333;
-    letter-spacing: 2px;
-    font-family: 'Barlow Condensed', sans-serif;
-    text-transform: uppercase;
-    margin-bottom: 0;
-  }
+/* GRAIN */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
+  opacity:.032;pointer-events:none;z-index:9000;mix-blend-mode:overlay;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  padding:0 56px;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(8,8,8,.92);
+  border-bottom:1px solid var(--k4);
+  backdrop-filter:blur(12px);
+}
+.nav-logo{display:flex;align-items:center;}
+.nav-right{display:flex;align-items:center;gap:32px;}
+.nav-link{font-family:var(--f-cond);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--w2);text-decoration:none;transition:color .15s;}
+.nav-link:hover{color:var(--w);}
+.nav-cta{
+  background:var(--r);color:var(--w);
+  font-family:var(--f-cond);font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;
+  padding:11px 26px;text-decoration:none;border:none;cursor:pointer;
+  transition:background .15s,transform .15s;
+  white-space:nowrap;
+}
+.nav-cta:hover{background:var(--rb);transform:translateY(-1px);}
+/* hambúrguer */
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0;}
+.nav-burger span{display:block;height:2px;background:var(--w);border-radius:2px;transition:transform .25s,opacity .25s;}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-burger.open span:nth-child(2){opacity:0;}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+/* menu mobile */
+.nav-mobile{
+  display:none;position:fixed;top:64px;left:0;right:0;z-index:499;
+  background:rgba(8,8,8,.97);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--k4);
+  flex-direction:column;padding:24px 24px 32px;gap:0;
+}
+.nav-mobile.open{display:flex;}
+.nav-mobile .nav-link{font-size:14px;letter-spacing:4px;padding:16px 0;border-bottom:1px solid var(--k4);}
+.nav-mobile .nav-cta{margin-top:20px;text-align:center;padding:16px;font-size:13px;}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;position:relative;
+  display:grid;grid-template-columns:1fr 1fr;
+  overflow:hidden;
+}
+/* Giant ghost text */
+.hero-ghost{
+  position:absolute;
+  bottom:-40px;left:-8px;
+  font-family:var(--f-head);font-size:clamp(160px,18vw,260px);
+  line-height:.85;letter-spacing:-4px;
+  color:rgba(255,255,255,.022);
+  pointer-events:none;white-space:nowrap;z-index:0;
+  user-select:none;
+}
+/* Red bleed */
+.hero-bleed{
+  position:absolute;top:0;right:0;
+  width:50%;height:100%;
+  background:linear-gradient(to right,var(--k) 0%,transparent 25%);
+  z-index:2;pointer-events:none;
+}
+
+/* LEFT */
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:120px 56px 80px 80px;
+  position:relative;z-index:3;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--f-cond);font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;
+  color:var(--r);margin-bottom:28px;
+}
+.dot{width:6px;height:6px;background:var(--r);border-radius:50%;animation:pulse-dot 2s ease infinite;flex-shrink:0;}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.6);}}
+
+.hero-h1{
+  font-family:var(--f-head);
+  font-size:clamp(72px,8.5vw,116px);
+  line-height:.88;letter-spacing:.5px;
+  color:var(--w);
+  margin-bottom:4px;
+}
+.hero-h1-red{
+  font-family:var(--f-head);
+  font-size:clamp(72px,8.5vw,116px);
+  line-height:.88;letter-spacing:.5px;
+  color:var(--r);display:block;
+  margin-bottom:32px;
+}
+.hero-statement{
+  font-family:var(--f-cond);font-size:clamp(17px,2vw,21px);
+  font-weight:400;color:var(--w2);line-height:1.65;
+  max-width:460px;margin-bottom:12px;
+}
+.hero-statement strong{color:var(--w);font-weight:600;}
+.hero-punch{
+  font-family:var(--f-cond);font-size:clamp(18px,2vw,22px);
+  font-weight:700;color:var(--w);line-height:1.4;
+  max-width:440px;margin-bottom:40px;
+  border-left:3px solid var(--r);padding-left:16px;
+}
+.hero-punch em{color:var(--r);font-style:normal;}
+.hero-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--r);color:var(--w);
+  font-family:var(--f-head);font-size:20px;letter-spacing:3px;
+  padding:18px 48px;text-decoration:none;border:none;cursor:pointer;
+  transition:all .2s;display:inline-block;position:relative;overflow:hidden;
+}
+.btn-primary::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.07) 50%,transparent 70%);
+  transform:translateX(-100%);transition:transform .4s;
+}
+.btn-primary:hover::after{transform:translateX(100%);}
+.btn-primary:hover{background:var(--rb);box-shadow:0 12px 40px rgba(204,0,0,.35);transform:translateY(-2px);}
+.btn-text{
+  font-family:var(--f-cond);font-size:14px;letter-spacing:2px;
+  color:var(--w2);text-decoration:none;
+  border-bottom:1px solid var(--w3);padding-bottom:1px;
+  transition:color .15s,border-color .15s;
+}
+.btn-text:hover{color:var(--w);border-color:var(--r);}
+
+/* RIGHT / PHOTO */
+.hero-right{position:relative;overflow:hidden;}
+.hero-right img{
+  width:100%;height:100%;object-fit:cover;
+  object-position:top center;
+  filter:grayscale(10%) contrast(1.08);
+  display:block;
+}
+.photo-ph{
+  width:100%;height:100%;min-height:600px;
+  background:var(--k2);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+}
+.photo-ph-skull{font-size:200px;opacity:.03;position:absolute;}
+.photo-ph-lbl{font-family:var(--f-cond);font-size:11px;letter-spacing:4px;color:var(--w3);text-transform:uppercase;position:relative;}
+/* Name strip */
+.hero-strip{
+  position:absolute;bottom:0;left:0;right:0;z-index:10;
+  background:rgba(8,8,8,.95);
+  border-top:3px solid var(--r);
+  padding:18px 28px;
+}
+.hero-strip-name{font-family:var(--f-head);font-size:22px;letter-spacing:4px;color:var(--w);display:block;line-height:1;}
+.hero-strip-role{font-family:var(--f-cond);font-size:11px;letter-spacing:3px;color:var(--r);text-transform:uppercase;display:block;margin-top:4px;}
+
+/* ── STATS ── */
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  background:var(--r);position:relative;z-index:10;
+}
+.stat{padding:20px 0;text-align:center;border-right:1px solid rgba(255,255,255,.12);}
+.stat:last-child{border:none;}
+.stat-n{font-family:var(--f-head);font-size:38px;color:var(--w);display:block;line-height:1;}
+.stat-l{font-family:var(--f-cond);font-size:10px;letter-spacing:3px;color:rgba(255,255,255,.55);text-transform:uppercase;margin-top:2px;display:block;}
+
+/* ── MARQUEE ── */
+.mq{overflow:hidden;background:var(--k2);border-top:1px solid var(--k4);border-bottom:1px solid var(--k4);padding:12px 0;}
+.mq-track{display:flex;width:max-content;animation:mq-run 35s linear infinite;}
+.mq-track:hover{animation-play-state:paused;}
+.mq-item{font-family:var(--f-head);font-size:13px;letter-spacing:5px;color:var(--w3);padding:0 28px;white-space:nowrap;text-transform:uppercase;}
+.mq-item.r{color:var(--r);}
+@keyframes mq-run{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ── SECTION BASE ── */
+section.s{padding:108px 80px;position:relative;}
+.w{max-width:1160px;margin:0 auto;}
+.eyebrow{font-family:var(--f-cond);font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--r);display:block;margin-bottom:12px;}
+h2.title{font-family:var(--f-head);font-size:clamp(46px,5.5vw,76px);line-height:.92;color:var(--w);letter-spacing:.5px;}
+h2.title span{color:var(--r);}
+.sub{font-family:var(--f-cond);font-size:20px;color:var(--w2);line-height:1.55;max-width:580px;margin-top:14px;}
+
+/* ── DOR SECTION ── */
+.dor-s{background:var(--k);}
+.dor-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:60px;}
+.dor-col{}
+.dor-col-h{
+  font-family:var(--f-cond);font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;
+  padding:12px 24px;display:block;
+}
+.dor-col-h.v{background:rgba(204,0,0,.15);color:var(--r);border-left:3px solid var(--r);}
+.dor-col-h.x{background:var(--k3);color:var(--w2);}
+.dor-item{
+  padding:22px 24px;
+  font-family:var(--f-cond);font-size:16px;line-height:1.6;
+  display:flex;align-items:flex-start;gap:14px;
+}
+.dor-item.v-item{background:var(--k2);border-left:3px solid var(--r);color:var(--w);margin-bottom:2px;}
+.dor-item.v-item strong{color:var(--w);font-weight:700;}
+.dor-item.x-item{background:var(--k);border-left:3px solid var(--k4);color:var(--w2);opacity:.85;margin-bottom:2px;}
+.dor-ico{font-size:14px;flex-shrink:0;margin-top:3px;}
+/* bottom CTA strip */
+.dor-cta-strip{
+  margin-top:3px;background:var(--r);
+  padding:28px 32px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:20px;
+}
+.dor-cta-strip p{font-family:var(--f-cond);font-size:21px;font-weight:700;color:var(--w);max-width:560px;line-height:1.35;}
+.dor-cta-strip a{
+  background:var(--k);color:var(--w);
+  font-family:var(--f-head);font-size:18px;letter-spacing:3px;
+  padding:16px 36px;text-decoration:none;white-space:nowrap;
+  transition:background .15s;flex-shrink:0;
+}
+.dor-cta-strip a:hover{background:var(--k3);}
+
+/* ── GAUJO ── */
+.gaujo-s{background:var(--k2);}
+.gaujo-grid{display:grid;grid-template-columns:400px 1fr;gap:80px;align-items:start;margin-top:60px;}
+.gaujo-photo{position:relative;}
+.gaujo-img-wrap{
+  position:relative;overflow:hidden;
+  background:var(--k3);
+}
+.gaujo-img-wrap::after{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:40%;
+  background:linear-gradient(to top,var(--k2),transparent);
+  pointer-events:none;
+}
+.gaujo-img-wrap img{width:100%;display:block;filter:grayscale(12%)contrast(1.08);}
+.gaujo-img-ph{
+  aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:8px;background:var(--k3);
+  font-family:var(--f-cond);font-size:11px;letter-spacing:4px;color:var(--w3);text-transform:uppercase;
+}
+.gaujo-img-ph span{font-size:80px;opacity:.06;}
+/* Red circle brand element */
+.gaujo-red-bg{
+  position:absolute;top:-24px;right:-24px;
+  width:200px;height:200px;background:var(--r);
+  border-radius:50%;opacity:.08;z-index:0;pointer-events:none;
+}
+.gaujo-tag{
+  background:var(--r);padding:14px 24px;
+  display:flex;flex-direction:column;gap:2px;
+  position:relative;z-index:1;
+}
+.gaujo-tag-name{font-family:var(--f-head);font-size:20px;letter-spacing:3px;color:var(--w);}
+.gaujo-tag-role{font-family:var(--f-cond);font-size:11px;letter-spacing:3px;color:rgba(255,255,255,.6);text-transform:uppercase;}
+/* Content */
+.gaujo-body p{font-size:17px;line-height:1.88;color:var(--w2);margin-bottom:18px;}
+.gaujo-body p strong{color:var(--w);}
+.gaujo-quote{
+  border-left:3px solid var(--r);padding:20px 24px;
+  background:var(--k);margin:28px 0;
+}
+.gaujo-quote p{font-family:var(--f-cond);font-size:20px;color:var(--w);line-height:1.55;font-style:italic;}
+.gaujo-creds{display:flex;flex-direction:column;gap:9px;margin-top:24px;}
+.gc{display:flex;align-items:center;gap:10px;font-family:var(--f-cond);font-size:16px;color:var(--w2);}
+.gc::before{content:'';width:4px;height:4px;background:var(--r);flex-shrink:0;border-radius:50%;}
+.mc-tagline{font-family:var(--f-cond);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--r);margin-top:6px;}
+
+/* ── MÉTODO ── */
+.metodo-s{background:var(--r);overflow:hidden;position:relative;padding:88px 80px;}
+.metodo-s::after{
+  content:'MÉTODO';
+  position:absolute;right:-40px;top:50%;transform:translateY(-50%);
+  font-family:var(--f-head);font-size:clamp(200px,22vw,320px);
+  color:rgba(0,0,0,.1);letter-spacing:-10px;
+  pointer-events:none;white-space:nowrap;line-height:1;
+}
+.metodo-inner{max-width:1160px;margin:0 auto;position:relative;z-index:1;}
+.metodo-grid{display:grid;grid-template-columns:260px 1fr;gap:80px;}
+.metodo-left-label{font-family:var(--f-cond);font-size:11px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.65);display:block;margin-bottom:12px;}
+.metodo-big{font-family:var(--f-head);font-size:clamp(56px,7vw,88px);line-height:.88;color:var(--w);letter-spacing:.5px;}
+.metodo-note{font-family:var(--f-cond);font-size:15px;color:rgba(255,255,255,.70);margin-top:14px;line-height:1.5;}
+.metodo-items{display:flex;flex-direction:column;gap:0;}
+.mi{padding:28px 0;border-bottom:1px solid rgba(255,255,255,.1);display:flex;gap:20px;}
+.mi:last-child{border:none;padding-bottom:0;}
+.mi-num{font-family:var(--f-head);font-size:44px;color:rgba(255,255,255,.18);line-height:1;flex-shrink:0;width:48px;}
+.mi-title{font-family:var(--f-head);font-size:24px;letter-spacing:.5px;color:var(--w);display:block;margin-bottom:7px;}
+.mi-desc{font-size:16px;line-height:1.85;color:rgba(255,255,255,.82);}
+.mi-desc strong{color:rgba(255,255,255,.98);font-weight:700;}
+
+/* ── PILARES ── */
+.pilares-s{background:var(--k2);}
+.pilares-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px;}
+.pilar{
+  background:var(--k);padding:48px 32px;
+  position:relative;overflow:hidden;
+  transition:background .25s;
+}
+.pilar:hover{background:#0C0C0C;}
+.pilar-line{
+  position:absolute;top:0;left:0;bottom:100%;width:3px;
+  background:var(--r);transition:bottom .45s ease;
+}
+.pilar:hover .pilar-line{bottom:0;}
+.pilar-n{
+  font-family:var(--f-head);font-size:80px;
+  color:var(--k4);display:block;line-height:1;margin-bottom:16px;
+  letter-spacing:-3px;transition:color .3s;
+}
+.pilar:hover .pilar-n{color:var(--k5);}
+.pilar-t{font-family:var(--f-head);font-size:26px;letter-spacing:.5px;color:var(--w);margin-bottom:12px;display:block;}
+.pilar-d{font-size:15px;line-height:1.8;color:var(--w2);}
+.pilar-list{margin-top:20px;padding-top:20px;border-top:1px solid var(--k4);display:flex;flex-direction:column;gap:7px;}
+.pl{display:flex;align-items:center;gap:8px;font-family:var(--f-cond);font-size:14px;color:var(--w2);letter-spacing:.5px;}
+.pl::before{content:'';width:3px;height:3px;background:var(--r);flex-shrink:0;border-radius:50%;}
+
+/* ── DEPOIMENTOS ── */
+.depo-s{background:var(--k);}
+.depo-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:52px;flex-wrap:wrap;gap:24px;}
+.depo-carousel{position:relative;overflow:hidden;width:100%;}
+.depo-track{display:flex;transition:transform .5s ease;}
+.depo-slide{flex:none;}
+.dc{
+  background:var(--k2);padding:40px 32px;
+  border-top:2px solid transparent;
+  transition:border-color .25s,background .25s;
+  display:flex;flex-direction:column;
+}
+.dc .dc-text{flex:1;}
+.dc:hover{border-top-color:var(--r);background:var(--k3);}
+.dc-stars{color:var(--r);font-size:12px;letter-spacing:3px;margin-bottom:18px;}
+.dc-text{font-size:16px;line-height:1.88;color:var(--w2);font-style:italic;margin-bottom:24px;}
+.dc-text strong{color:var(--w);font-style:normal;}
+.dc-foot{display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid var(--k4);}
+.dc-av{width:40px;height:40px;background:var(--k4);border:1px solid var(--r);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;border-radius:50%;overflow:hidden;}
+.dc-av img{width:100%;height:100%;object-fit:cover;}
+.dc-name{font-family:var(--f-cond);font-size:15px;font-weight:700;color:var(--w);display:block;letter-spacing:.5px;}
+.dc-meta{font-size:13px;color:var(--w2);display:block;margin-top:1px;}
+.dc-badge{margin-left:auto;background:var(--r);color:var(--w);font-family:var(--f-cond);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0;}
+.depo-controls{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:24px;}
+.depo-btn{background:var(--k2);border:1px solid var(--k4);color:var(--w2);width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;transition:background .2s,color .2s,border-color .2s;flex-shrink:0;}
+.depo-btn:hover{background:var(--r);color:var(--w);border-color:var(--r);}
+.depo-pause{background:var(--k2);border:1px solid var(--k4);color:var(--w2);padding:0 16px;height:40px;display:flex;align-items:center;gap:6px;cursor:pointer;font-family:var(--f-cond);font-size:12px;letter-spacing:1px;text-transform:uppercase;transition:background .2s,color .2s,border-color .2s;}
+.depo-pause:hover{background:var(--k3);border-color:var(--w3);}
+.depo-dots{display:flex;gap:6px;align-items:center;}
+.depo-dot{width:6px;height:6px;background:var(--k4);border-radius:50%;cursor:pointer;transition:background .2s,transform .2s;}
+.depo-dot.active{background:var(--r);transform:scale(1.4);}
+
+/* ── TRANSFORMAÇÕES ── */
+.transf-s{background:var(--k2);padding:88px 80px;}
+.transf-header{margin-bottom:52px;}
+.transf-eyebrow{font-family:var(--f-cond);font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--r);display:block;margin-bottom:12px;}
+.transf-title{font-family:var(--f-head);font-size:clamp(32px,5vw,52px);color:var(--w);line-height:1.05;text-transform:uppercase;}
+.transf-title span{color:var(--r);}
+.transf-carousel{overflow:hidden;position:relative;}
+.transf-track{display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1);}
+.transf-slide{flex:none;}
+.transf-item{position:relative;overflow:hidden;cursor:pointer;}
+.transf-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55) 0%,transparent 50%);opacity:0;transition:opacity .3s;}
+.transf-item:hover::after{opacity:1;}
+.transf-item img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;transition:transform .4s;}
+.transf-item:hover img{transform:scale(1.04);}
+@media(max-width:900px){.transf-s{padding:60px 24px;}}
+
+/* ── FAQ ── */
+.faq-s{background:var(--k2);}
+.faq-list{max-width:820px;margin:48px auto 0;display:flex;flex-direction:column;gap:2px;}
+.fq{background:var(--k);overflow:hidden;}
+.fq-h{
+  padding:20px 28px;display:flex;align-items:center;justify-content:space-between;
+  cursor:pointer;transition:background .15s;
+}
+.fq-h:hover{background:var(--k3);}
+.fq-txt{font-family:var(--f-cond);font-size:18px;font-weight:600;color:var(--w);line-height:1.3;}
+.fq-ico{font-family:var(--f-head);font-size:22px;color:var(--r);flex-shrink:0;margin-left:16px;transition:transform .25s;}
+.fq.open .fq-ico{transform:rotate(45deg);}
+.fq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.fq-ai{padding:0 28px 22px;padding-top:18px;font-size:15px;line-height:1.8;color:var(--w2);border-top:1px solid var(--k4);}
+.fq-ai strong{color:var(--w);}
+
+/* ── FINAL CTA ── */
+.final-s{
+  background:var(--k);padding:128px 80px;
+  text-align:center;position:relative;overflow:hidden;
+}
+.final-s::before{
+  content:'💀';
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-size:500px;opacity:.014;pointer-events:none;z-index:0;
+  line-height:1;
+}
+.final-inner{position:relative;z-index:1;}
+.final-h{
+  font-family:var(--f-head);
+  font-size:clamp(80px,11vw,140px);
+  line-height:.85;color:var(--w);margin-bottom:4px;
+}
+.final-h span{color:var(--r);}
+.final-p{
+  font-family:var(--f-cond);font-size:21px;color:var(--w2);
+  line-height:1.6;max-width:560px;margin:28px auto 44px;
+}
+.final-p strong{color:var(--w);}
+
+/* ── FOOTER ── */
+footer{
+  background:rgba(8,8,8,.92);
+  border-top:1px solid var(--k4);
+  backdrop-filter:blur(12px);
+  padding:0 56px;
+  height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;
+}
+.f-logo{display:flex;align-items:center;}
+.f-logo span{font-family:var(--f-head);font-size:22px;letter-spacing:3px;color:var(--w);white-space:nowrap;}
+.f-links{display:flex;align-items:center;gap:32px;}
+.f-link{font-family:var(--f-cond);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--w2);text-decoration:none;transition:color .15s;}
+.f-link:hover{color:var(--w);}
+.f-copy{font-family:var(--f-cond);font-size:11px;letter-spacing:2px;color:var(--w3);text-transform:uppercase;}
+@media(max-width:700px){footer{padding:0 24px;height:auto;padding-top:20px;padding-bottom:20px;flex-wrap:wrap;}.f-links{gap:16px;}.f-copy{display:none;}}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.rv.on{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.12s;}.d2{transition-delay:.24s;}.d3{transition-delay:.36s;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .nav-right{display:none;}
+  .nav-burger{display:flex;}
+  .hero-strip-name{font-size:16px;letter-spacing:2px;}
+  .hero-strip-role{font-size:13px;letter-spacing:2px;color:var(--w2);}
+  .stat-l{font-size:12px;letter-spacing:2px;color:rgba(255,255,255,.85);}
+  .mq-item{font-size:14px;color:var(--w2);}
+  .dor-cta-strip{flex-direction:column;align-items:center;text-align:center;}
+  .dor-cta-strip p{text-align:center;max-width:100%;}
+  .dor-cta-strip a{width:100%;text-align:center;}
+}
+@media(max-width:1024px){
+  nav{padding:0 20px;}
+  .hero{grid-template-columns:1fr;}
+  .hero-left{padding:100px 24px 40px;}
+  .hero-right{height:70vw;max-height:500px;}
+  .stats{grid-template-columns:repeat(2,1fr);}
+  section.s{padding:72px 24px;}
+  .dor-grid,.gaujo-grid,.pilares-grid,.depo-grid{grid-template-columns:1fr;}
+  .metodo-s{padding:60px 24px;}
+  .metodo-grid{grid-template-columns:1fr;gap:40px;}
+  .final-s{padding:80px 24px;}
+  footer{padding:28px 24px;flex-direction:column;text-align:center;}
+  .form-box{padding:32px 20px;}
+  .frow{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span style="font-family:var(--f-head);font-size:22px;letter-spacing:3px;color:var(--w);white-space:nowrap;">CAVEIRA TEAM 💀</span>
+  </div>
+  <div class="nav-right">
+    <a href="#metodo" class="nav-link">Método</a>
+    <a href="https://wa.me/5581997660500?text=Ol%C3%A1%2C%20quero%20entrar%20no%20Caveira%20Team!" class="nav-cta" target="_blank" rel="noopener noreferrer">💀 Entrar no Caveira Team</a>
+  </div>
+  <button class="nav-burger" id="navBurger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="#metodo" class="nav-link">Método</a>
+  <a href="https://wa.me/5581997660500?text=Ol%C3%A1%2C%20quero%20entrar%20no%20Caveira%20Team!" class="nav-cta" target="_blank" rel="noopener noreferrer">💀 Entrar no Caveira Team</a>
+</div>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-ghost">CAVEIRA</div>
+  <div class="hero-bleed"></div>
+
+  <div class="hero-left">
+    <div class="hero-eyebrow"><span class="dot"></span>Caveira Team · Vagas Abertas</div>
+
+    <h1 class="hero-h1">Treina todo dia<br>e não evolui?</h1>
+    <span class="hero-h1-red">Eu conheço<br>essa história.</span>
+
+    <p class="hero-statement">
+      Meses na academia. Semanas de esforço. Peso na balança que não sai, corpo que não muda, disposição que começa a ir embora.
+      <strong>Isso não é falta de vontade. É falta de método.</strong>
+    </p>
+    <p class="hero-punch">
+      Treino pronto que não te serve.<br>
+      Treinador fraco não te evolui.<br>
+      <em>Método real muda isso.</em>
+    </p>
+
+    <div class="hero-actions">
+      <a href="https://wa.me/5581997660500?text=Ol%C3%A1%2C%20quero%20entrar%20no%20Caveira%20Team!" class="btn-primary" target="_blank" rel="noopener noreferrer">💀 Caveira A</a>
+      <a href="#metodo" class="btn-text">Ver o método →</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <!-- FOTO DO GAUJO: substitua o div abaixo por: <img src="gaujo.jpg" alt="Gabriel Araújo"> -->
+    <img src="Gemini_Generated_Image_o1wvkzo1wvkzo1wv.png" alt="Gabriel Araújo · Gaujo Caveira">
+    <div class="hero-strip">
+      <span class="hero-strip-name">GABRIEL ARAÚJO · GAUJO CAVEIRA</span>
+      <span class="hero-strip-role">Fundador · Método Caveira · Profissional de Educação Física</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><span class="stat-n">12+</span><span class="stat-l">Anos com o movimento</span></div>
+  <div class="stat"><span class="stat-n">100%</span><span class="stat-l">Individualizado</span></div>
+  <div class="stat"><span class="stat-n">Low</span><span class="stat-l">Volume · Alta intensidade</span></div>
+  <div class="stat"><span class="stat-n">💀</span><span class="stat-l">Método próprio</span></div>
+</div>
+
+<!-- MARQUEE -->
+<div class="mq">
+  <div class="mq-track">
+    <span class="mq-item">GABRIEL ARAUJO</span><span class="mq-item r">💀</span>
+    <span class="mq-item">CAVEIRA TEAM</span><span class="mq-item r">👊</span>
+    <span class="mq-item">TENSÃO MECÂNICA</span><span class="mq-item r">🏴‍☠️</span>
+    <span class="mq-item">LOW VOLUME</span><span class="mq-item r">💀</span>
+    <span class="mq-item">ALTA INTENSIDADE</span><span class="mq-item r">👊</span>
+    <span class="mq-item">DESPERTE O CAOS</span><span class="mq-item r">💀</span>
+    <span class="mq-item">MÉTODO CAVEIRA</span><span class="mq-item r">🏴‍☠️</span>
+    <span class="mq-item">GABRIEL ARAUJO</span><span class="mq-item r">💀</span>
+    <span class="mq-item">CAVEIRA TEAM</span><span class="mq-item r">👊</span>
+    <span class="mq-item">TENSÃO MECÂNICA</span><span class="mq-item r">🏴‍☠️</span>
+    <span class="mq-item">LOW VOLUME</span><span class="mq-item r">💀</span>
+    <span class="mq-item">ALTA INTENSIDADE</span><span class="mq-item r">👊</span>
+    <span class="mq-item">DESPERTE O CAOS</span><span class="mq-item r">💀</span>
+    <span class="mq-item">MÉTODO CAVEIRA</span><span class="mq-item r">🏴‍☠️</span>
   </div>
 </div>
 
-<section class="hero">
-  <div class="skull">💀</div>
-  <div class="brand">CAVEIRA TEAM</div>
-  <h1>O GUIA QUE O<br><span>MERCADO</span><br>NÃO TE DÁ</h1>
-  <p>Chega de treino genérico. Descobre por que carga, tensão mecânica e método definem tudo — e como aplicar isso agora.</p>
-</section>
+<!-- ══════════════════════════════════════════
+     DOR — PARA QUEM É
+══════════════════════════════════════════ -->
+<section class="s dor-s">
+  <div class="w">
+    <div class="rv">
+      <span class="eyebrow">Sem filtro</span>
+      <h2 class="title">Se você <span>se reconhece</span><br>aqui. Leia até o fim.</h2>
+      <p class="sub">Não estamos falando apenas de iniciante. Estamos falando de quem já treina, e mesmo assim não vê resultado.</p>
+    </div>
 
-<section class="video-section">
-  <div class="video-wrapper">
-    <div class="video-label">Assiste antes de baixar</div>
-    <div class="video-container">
-      <iframe
-        id="yt-player"
-        src="https://www.youtube.com/embed/wexJYfLFQfc?enablejsapi=1"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+    <div class="dor-grid rv d1">
+      <div class="dor-col">
+        <span class="dor-col-h v">💀 Isso é exatamente você</span>
+        <div class="dor-item v-item"><span class="dor-ico">—</span><span>Treina há <strong>meses ou anos</strong>, o corpo melhora algo no começo, e travou</span></div>
+        <div class="dor-item v-item"><span class="dor-ico">—</span><span>Vai à academia mas <strong>não sabe controlar carga</strong> de uma semana pra outra</span></div>
+        <div class="dor-item v-item"><span class="dor-ico">—</span><span>Segue planilha da internet ou personal que nunca te avaliou de verdade. <strong>Resultado genérico porque o método é inexistente</strong></span></div>
+        <div class="dor-item v-item"><span class="dor-ico">—</span><span>Quer se sentir bem com o corpo: <strong>confiante, com disposição, sem insegurança</strong> na roupa que escolhe</span></div>
+        <div class="dor-item v-item"><span class="dor-ico">—</span><span>Está disposta a ser cobrada, desde que o profissional <strong>saiba o que está fazendo</strong></span></div>
+        <div class="dor-item v-item"><span class="dor-ico">—</span><span>Você ou seu parceiro treina sozinho enquanto o outro fica de fora, e isso <strong>cria fricção que poderia virar parceria</strong></span></div>
+      </div>
+      <div class="dor-col">
+        <span class="dor-col-h x">✗ Isso não é pra você</span>
+        <div class="dor-item x-item"><span class="dor-ico">✗</span><span>Busca atalho, milagre ou resultado sem esforço real</span></div>
+        <div class="dor-item x-item"><span class="dor-ico">✗</span><span>Prefere treino fofo e queimação</span></div>
+        <div class="dor-item x-item"><span class="dor-ico">✗</span><span>Não aceita ser cobrada ou se comprometer</span></div>
+        <div class="dor-item x-item"><span class="dor-ico">✗</span><span>Quer motivação vazia em vez de método real</span></div>
+        <div class="dor-item x-item"><span class="dor-ico">✗</span><span>Quer treino de internet com biomecânica de circo</span></div>
+      </div>
+    </div>
+
+    <div class="dor-cta-strip rv d2">
+      <p>Se você está cansada de treinar em vão, o Caveira Team vai te mostrar o caminho.</p>
+      <a href="https://wa.me/5581997660500?text=Ol%C3%A1%2C%20quero%20entrar%20no%20Caveira%20Team!" target="_blank" rel="noopener noreferrer">💀 Caveira A</a>
     </div>
   </div>
 </section>
 
-<section class="benefits">
-  <div class="benefits-inner">
-    <div class="section-label">O que está dentro</div>
-    <div class="divider"></div>
-    <div class="benefit-item">
-      <div class="benefit-icon">01</div>
-      <div class="benefit-text">
-        <h3>Por que você não evolui</h3>
-        <p>A razão técnica por que planilhas genéricas sabotam o seu resultado — sem enrolação.</p>
-      </div>
+<!-- ══════════════════════════════════════════
+     GAUJO
+══════════════════════════════════════════ -->
+<section class="s gaujo-s">
+  <div class="w">
+    <div class="rv">
+      <span class="eyebrow">O profissional por trás do método</span>
+      <h2 class="title">Gabriel Araújo.<br><span>Gaujo Caveira.</span></h2>
     </div>
-    <div class="benefit-item">
-      <div class="benefit-icon">02</div>
-      <div class="benefit-text">
-        <h3>Tensão mecânica na prática</h3>
-        <p>O principal mecanismo de hipertrofia explicado de forma acessível e aplicável.</p>
+    <div class="gaujo-grid rv d1">
+      <div class="gaujo-photo">
+        <div style="position:relative;">
+          <div class="gaujo-red-bg"></div>
+          <div class="gaujo-img-wrap">
+            <img src="IMG_5537.jpeg" alt="Gabriel Araújo — Gaujo Caveira" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;">
+          </div>
+          <div class="gaujo-tag">
+            <span class="gaujo-tag-name">GABRIEL ARAÚJO 💀</span>
+            <span class="gaujo-tag-role">Gaujo Caveira · Fundador · Profissional de Educação Física</span>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="benefit-item">
-      <div class="benefit-icon">03</div>
-      <div class="benefit-text">
-        <h3>Low volume, alta intensidade</h3>
-        <p>A lei do Método Caveira: menos volume, mais carga, recuperação inteligente.</p>
-      </div>
-    </div>
-    <div class="benefit-item">
-      <div class="benefit-icon">04</div>
-      <div class="benefit-text">
-        <h3>Como começar hoje</h3>
-        <p>Passos concretos pra sair do treino aleatório e entrar num processo real de evolução.</p>
+      <div class="gaujo-body">
+        <p>Começou a treinar em casa aos 13 anos. Desde os 15, sabia que queria transformar vidas através do exercício baseado em ciência. <strong>Entrou na faculdade de Educação Física aos 18. Hoje coloca tudo em prática, explica o porquê de cada coisa e acompanha até a caveira ficar feliz ao se olhar no espelho.</strong></p>
+        <p>Casado com Maria Eduarda — a Sra. Caveira. Constroem juntos o mesmo estilo de vida que prescreve para os caveiras: planejamento, execução e consistência. <strong>Quando os dois vivem o método, o método é real.</strong></p>
+        <div class="gaujo-quote">
+          <p>"O mercado não erra por falta de acesso à ciência. Erra por não saber adaptar o que a ciência diz para a pessoa real, aquela que não é atleta, que não vive do esporte, mas quer se sentir bem com o próprio corpo."</p>
+        </div>
+        <p>Direto, maduro, técnico, implacável com a excelência. Exigente, <strong>não por arrogância, mas porque sabe com clareza que pode extrair o máximo de cada um.</strong></p>
+        <div class="gaujo-creds">
+          <div class="gc">Profissional de educação física especializado em hipertrofia</div>
+          <div class="gc">Mais de 10 anos de relação com o fitness</div>
+          <div class="gc">Criador do Método Caveira — low volume, alta intensidade</div>
+          <div class="gc mc-tagline">Resultados de atletas em pessoas normais</div>
+          <div class="gc">Como quero ser lembrado? "O treinador que finalmente me fez evoluir de verdade"</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="cta-section">
-  <div class="cta-inner">
-    <h2>BAIXA<br><span>AGORA</span></h2>
-    <div class="progress-bar-wrap">
-      <div class="progress-bar-fill" id="progress-fill"></div>
+<!-- ══════════════════════════════════════════
+     MÉTODO
+══════════════════════════════════════════ -->
+<section class="metodo-s" id="metodo">
+  <div class="metodo-inner">
+    <div class="metodo-grid rv">
+      <div>
+        <span class="metodo-left-label">A base de tudo</span>
+        <div class="metodo-big">O Método<br>Caveira.</div>
+        <p class="metodo-note">Ciência aplicada à pessoa comum, não ao atleta. A você.</p>
+      </div>
+      <div class="metodo-items">
+        <div class="mi">
+          <span class="mi-num">01</span>
+          <div>
+            <span class="mi-title">Tensão mecânica é a lei.</span>
+            <p class="mi-desc">Carga, peso, técnica e intensidade são sempre o carro-chefe. Reduzir intervalo entre séries é um dos erros mais comuns do mercado: diminui a carga, reduz a tensão mecânica, compromete o ganho muscular e, consequentemente, sabota até o emagrecimento. <strong>Menos músculo significa metabolismo mais lento, significa zero resultado. O mercado comete esse erro todos os dias. E ainda cobra por isso.</strong></p>
+          </div>
+        </div>
+        <div class="mi">
+          <span class="mi-num">02</span>
+          <div>
+            <span class="mi-title">Low volume. Alta intensidade. Recuperação real.</span>
+            <p class="mi-desc">Menos séries, mais foco. Volume gerenciado, intensidade máxima, recuperação adequada. A lei padrão do Caveira Team. <strong>Resultado não vem de quantidade — vem de qualidade, progressão e inteligência.</strong> Você tem vida além da academia. O método respeita isso e entrega mais.</p>
+          </div>
+        </div>
+        <div class="mi">
+          <span class="mi-num">03</span>
+          <div>
+            <span class="mi-title">Ciência adaptada para você, não para o manual.</span>
+            <p class="mi-desc">O erro do mercado não é ignorar a ciência. É não saber aplicar para quem não é atleta profissional. <strong>O Método Caveira adapta princípios reais de hipertrofia para a sua rotina, o seu corpo e os seus objetivos</strong>, seja você sozinha ou construindo esse processo com seu parceiro ao lado.</p>
+            <p class="mc-tagline">Resultados de atletas em pessoas normais</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="watch-hint" id="watch-hint">
-      Assiste pelo menos <span id="counter">30</span>s do vídeo para liberar o download
-    </div>
-    <a id="btn-download" class="btn-download" href="/ebook/segredoscaveirateam.pdf.pdf" download>
-      LIBERA EM <span id="btn-counter">30</span>S
-    </a>
-    <div class="free-tag">💀 Método Caveira — Desperte o Caos</div>
   </div>
 </section>
 
-<footer>
-  <p class="footer-copy">© Caveira Team · Todos os direitos reservados</p>
-</footer>
+<!-- ══════════════════════════════════════════
+     TRANSFORMAÇÕES
+══════════════════════════════════════════ -->
+<section class="transf-s">
+  <div class="transf-header rv">
+    <span class="transf-eyebrow">Prova real</span>
+    <h2 class="transf-title">Caveiras que escolheram<br><span>parar de treinar errado</span></h2>
+  </div>
+  <div class="transf-carousel rv" id="transfCarousel">
+    <div class="transf-track" id="transfTrack">
+      <div class="transf-slide"><div class="transf-item"><img src="1.png" alt="Transformação Caveira Team" loading="lazy"></div></div>
+      <div class="transf-slide"><div class="transf-item"><img src="2.png" alt="Transformação Caveira Team" loading="lazy"></div></div>
+      <div class="transf-slide"><div class="transf-item"><img src="3.png" alt="Transformação Caveira Team" loading="lazy"></div></div>
+      <div class="transf-slide"><div class="transf-item"><img src="4.png" alt="Transformação Caveira Team" loading="lazy"></div></div>
+      <div class="transf-slide"><div class="transf-item"><img src="5.png" alt="Transformação Caveira Team" loading="lazy"></div></div>
+      <div class="transf-slide"><div class="transf-item"><img src="6.png" alt="Transformação Caveira Team" loading="lazy"></div></div>
+      <div class="transf-slide"><div class="transf-item"><img src="7.png" alt="Transformação Caveira Team" loading="lazy"></div></div>
+      <div class="transf-slide"><div class="transf-item"><img src="8.png" alt="Transformação Caveira Team" loading="lazy"></div></div>
+      <div class="transf-slide"><div class="transf-item"><img src="9.png" alt="Transformação Caveira Team" loading="lazy"></div></div>
+    </div>
+  </div>
+  <div class="depo-controls" style="margin-top:20px;">
+    <button class="depo-btn" id="transfPrev">←</button>
+    <div class="depo-dots" id="transfDots"></div>
+    <button class="depo-btn" id="transfNext">→</button>
+    <button class="depo-pause" id="transfPause">⏸ PAUSAR</button>
+  </div>
+</section>
 
+<!-- ══════════════════════════════════════════
+     PILARES
+══════════════════════════════════════════ -->
+<section class="s pilares-s">
+  <div class="w">
+    <div class="rv">
+      <span class="eyebrow">Como o serviço funciona</span>
+      <h2 class="title">3 pilares.<br><span>Nenhum genérico.</span></h2>
+    </div>
+    <div class="pilares-grid">
+      <div class="pilar rv">
+        <div class="pilar-line"></div>
+        <span class="pilar-n">01</span>
+        <span class="pilar-t">Diagnóstico Individual</span>
+        <p class="pilar-d">Avaliação postural completa. Análise de rotina, histórico e contexto. Identificação dos desequilíbrios que estão te travando ou te machucando sem que você perceba. Nada começa sem entender o seu corpo.</p>
+        <div class="pilar-list">
+          <span class="pl">Avaliação postural completa</span>
+          <span class="pl">Análise de rotina e histórico</span>
+          <span class="pl">Mapeamento do que está bloqueando</span>
+        </div>
+      </div>
+      <div class="pilar rv d1">
+        <div class="pilar-line"></div>
+        <span class="pilar-n">02</span>
+        <span class="pilar-t">Prescrição Estratégica</span>
+        <p class="pilar-d">Treino construído para a sua realidade: rotina, nível, objetivo e resposta do corpo. Progressão de carga real. Técnicas de intensidade aplicadas com lógica: cluster set e técnicas que realmente te levam para outro nível. Nada vem do acaso, tudo tem um motivo e um porquê. Nada é genérico. Quando você acessa um manual completo e entende cada etapa, a transformação acontece.</p>
+        <div class="pilar-list">
+          <span class="pl">Progressão de carga documentada</span>
+          <span class="pl">Cluster set e técnicas avançadas</span>
+          <span class="pl">Low volume · Intensidade máxima</span>
+        </div>
+      </div>
+      <div class="pilar rv d2">
+        <div class="pilar-line"></div>
+        <span class="pilar-n">03</span>
+        <span class="pilar-t">Acompanhamento Contínuo</span>
+        <p class="pilar-d">Ajustes semanais baseados na sua evolução real. Suporte direto com o Gaujo. Grupo exclusivo do Caveira Team. O treino não é entregue e abandonado, é gerenciado até você ficar feliz ao se olhar no espelho.</p>
+        <div class="pilar-list">
+          <span class="pl">Ajustes semanais por evolução</span>
+          <span class="pl">Suporte direto com o Gaujo</span>
+          <span class="pl">Grupo exclusivo dos Caveiras 💀</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAVEIRA B CTA STRIP -->
+<div class="dor-cta-strip rv d2" style="padding:40px 80px;">
+  <p>Você já entendeu o método. Falta só dar o próximo passo.</p>
+  <a href="https://wa.me/5581997660500?text=Ol%C3%A1%2C%20vi%20o%20m%C3%A9todo%20e%20quero%20entrar%20no%20Caveira%20Team!" target="_blank" rel="noopener noreferrer">💀 Caveira B</a>
+</div>
+
+<!-- ══════════════════════════════════════════
+     DEPOIMENTOS
+══════════════════════════════════════════ -->
+<section class="s depo-s">
+  <div class="w">
+    <div class="depo-top rv">
+      <div>
+        <span class="eyebrow">Quem já Despertou o Caos</span>
+        <h2 class="title">Resultado real.<br><span>Sem filtro.</span></h2>
+      </div>
+      <a href="https://wa.me/5581997660500?text=Ol%C3%A1%2C%20li%20tudo%20e%20quero%20entrar%20no%20Caveira%20Team!" class="btn-primary" target="_blank" rel="noopener noreferrer">💀 Caveira C</a>
+    </div>
+    <div class="depo-carousel" id="depoCarousel">
+      <div class="depo-track" id="depoTrack">
+        <div class="depo-slide">
+          <div class="dc">
+            <div class="dc-stars">★★★★★</div>
+            <p class="dc-text">"Já nas primeiras semanas percebi mudanças no corpo, o que me incentivou a continuar. Em 1 ano e meio treinando sozinha não tinha conseguido o que conquistei em 3 meses com o Método Caveira. <strong>Barriga que eu achava que seria a última coisa a mudar, hoje não me incomoda mais.</strong>"</p>
+            <div class="dc-foot">
+              <div class="dc-av"><img src="amanda1.png" alt="Amanda Silva"></div>
+              <div><span class="dc-name">Amanda Silva</span><span class="dc-meta">3 meses · Emagrecimento &amp; Definição</span></div>
+              <div class="dc-badge">Definida 💀</div>
+            </div>
+          </div>
+        </div>
+        <div class="depo-slide">
+          <div class="dc">
+            <div class="dc-stars">★★★★★</div>
+            <p class="dc-text">"Hoje me sinto mais forte, mais leve e mais eu. Você acreditou em mim mesmo quando eu duvidava, entendeu meu ritmo e celebrou cada pequena conquista. <strong>Transformei cansaço em força e rotina em evolução.</strong>"</p>
+            <div class="dc-foot">
+              <div class="dc-av"><img src="luana1.png" alt="Luana Maria"></div>
+              <div><span class="dc-name">Luana Maria</span><span class="dc-meta">90 dias · Pós-gestação &amp; Definição</span></div>
+              <div class="dc-badge">Mãe Caveira 💀</div>
+            </div>
+          </div>
+        </div>
+        <div class="depo-slide">
+          <div class="dc">
+            <div class="dc-stars">★★★★★</div>
+            <p class="dc-text">"Muita gente me perguntou o que eu estava fazendo de diferente. Meu rosto, minha barriga… o corpo mudou de verdade. <strong>Força de vontade, porque não é fácil. Mas valeu cada treino.</strong>"</p>
+            <div class="dc-foot">
+              <div class="dc-av"><img src="silvia1.png" alt="Silvia Barbosa"></div>
+              <div><span class="dc-name">Silvia Barbosa</span><span class="dc-meta">90 dias · Emagrecimento</span></div>
+              <div class="dc-badge">9/10 evolução 💀</div>
+            </div>
+          </div>
+        </div>
+        <div class="depo-slide">
+          <div class="dc">
+            <div class="dc-stars">★★★★★</div>
+            <p class="dc-text">"Passei a gostar de treinar. Não vou por obrigação, vou porque gosto. Braço mais firme, cintura afinada, menos flácida. <strong>Mudou praticamente tudo. Inclusive a minha cabeça.</strong>"</p>
+            <div class="dc-foot">
+              <div class="dc-av"><img src="tamyres1.png" alt="Tamyres Ranyelle"></div>
+              <div><span class="dc-name">Tamyres Ranyelle</span><span class="dc-meta">90 dias · Definição &amp; Firmeza</span></div>
+              <div class="dc-badge">Mudança de vida 💀</div>
+            </div>
+          </div>
+        </div>
+        <div class="depo-slide">
+          <div class="dc">
+            <div class="dc-stars">★★★★★</div>
+            <p class="dc-text">"Minha autoestima aumentou bastante quando vi as mudanças. Barriga diminuiu, ombros definiram. <strong>90 dias e 90% de aderência, só faltei 1 dia.</strong> O que me manteve firme foi querer mudar o meu corpo. E funcionou."</p>
+            <div class="dc-foot">
+              <div class="dc-av"><img src="wellen1.png" alt="Wellen Dias"></div>
+              <div><span class="dc-name">Wellen Dias</span><span class="dc-meta">90 dias · Emagrecimento &amp; Definição</span></div>
+              <div class="dc-badge">8/10 shape 💀</div>
+            </div>
+          </div>
+        </div>
+        <div class="depo-slide">
+          <div class="dc">
+            <div class="dc-stars">★★★★★</div>
+            <p class="dc-text">"Me sentia estagnada, meu peso não alterava, não via resultado. Depois que entrei no time, tudo mudou. <strong>Força 10/10, corpo modelando, e agora sei exatamente o que estou fazendo.</strong> Escolhi os profissionais certos."</p>
+            <div class="dc-foot">
+              <div class="dc-av"><img src="adriele1.png" alt="Adriele Sales"></div>
+              <div><span class="dc-name">Adriele Sales</span><span class="dc-meta">90 dias · Força &amp; Definição</span></div>
+              <div class="dc-badge">Decolando 💀</div>
+            </div>
+          </div>
+        </div>
+        <div class="depo-slide">
+          <div class="dc">
+            <div class="dc-stars">★★★★★</div>
+            <p class="dc-text">"Desinchei, perdi medidas e fiquei mais motivada. A mudança do corpo em si me surpreendeu. <strong>Meu propósito é emagrecer, e pela primeira vez sinto que estou no caminho certo.</strong>"</p>
+            <div class="dc-foot">
+              <div class="dc-av"><img src="idiana1.png" alt="Idiana Suzan"></div>
+              <div><span class="dc-name">Idiana Suzan</span><span class="dc-meta">90 dias · Emagrecimento</span></div>
+              <div class="dc-badge">Desinchada 💀</div>
+            </div>
+          </div>
+        </div>
+        <div class="depo-slide">
+          <div class="dc">
+            <div class="dc-stars">★★★★★</div>
+            <p class="dc-text">"4 anos treinando sem ver diferença real. Em 45 dias com o Método Caveira, pela primeira vez vi uma diferença notável na minha composição corporal. <strong>Ganhei 1kg e mesmo assim não me sinto mal, pelo contrário, estou super feliz com o processo.</strong>"</p>
+            <div class="dc-foot">
+              <div class="dc-av"><img src="lucy1.png" alt="Lucy Milly"></div>
+              <div><span class="dc-name">Lucy Milly</span><span class="dc-meta">45 dias · Recomposição Corporal</span></div>
+              <div class="dc-badge">Recomposição 💀</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="depo-controls">
+      <button class="depo-btn" id="depoPrev" aria-label="Anterior">&#8592;</button>
+      <div class="depo-dots" id="depoDots"></div>
+      <button class="depo-btn" id="depoNext" aria-label="Próximo">&#8594;</button>
+      <button class="depo-pause" id="depoPause">⏸ Pausar</button>
+    </div>
+  </div>
+</section>
 <script>
-  var REQUIRED = 30;
-  var EBOOK_URL = '/ebook/segredoscaveirateam.pdf.pdf';
-  var watched = 0;
-  var interval = null;
-  var player = null;
-  var unlocked = false;
+(function(){
+  const carousel = document.getElementById('depoCarousel');
+  const track = document.getElementById('depoTrack');
+  const slides = document.querySelectorAll('.depo-slide');
+  const dotsContainer = document.getElementById('depoDots');
+  const pauseBtn = document.getElementById('depoPause');
+  const total = slides.length; // 8 slides individuais
+  let current = 0;
+  let paused = false;
+  let timer;
+  let perPage = 2;
+  let totalPages = 4;
+  let dots = [];
 
-  function updateUI() {
-    var remaining = Math.max(0, REQUIRED - Math.floor(watched));
-    var pct = Math.min(100, (watched / REQUIRED) * 100);
-    document.getElementById('progress-fill').style.width = pct + '%';
-    if (remaining > 0) {
-      document.getElementById('counter').textContent = remaining;
-      document.getElementById('btn-counter').textContent = remaining;
-    } else if (!unlocked) {
-      unlock();
+  function isMobile(){ return window.innerWidth <= 700; }
+
+  function buildDots(){
+    perPage = isMobile() ? 1 : 2;
+    totalPages = total / perPage;
+    dotsContainer.innerHTML = '';
+    dots = [];
+    for(var i = 0; i < totalPages; i++){
+      var dot = document.createElement('span');
+      dot.className = 'depo-dot' + (i === 0 ? ' active' : '');
+      dot.dataset.index = i;
+      dot.addEventListener('click', function(){
+        goTo(parseInt(this.dataset.index));
+        if(!paused){ startAuto(); }
+      });
+      dotsContainer.appendChild(dot);
+      dots.push(dot);
     }
   }
 
-  function unlock() {
-    unlocked = true;
-    var btn = document.getElementById('btn-download');
-    btn.classList.add('unlocked');
-    btn.textContent = 'BAIXAR EBOOK GRÁTIS';
-    document.getElementById('watch-hint').innerHTML = '✔ Pronto. O download está liberado.';
-    document.getElementById('watch-hint').style.color = '#C8102E';
-    document.getElementById('progress-fill').style.width = '100%';
-    if (interval) clearInterval(interval);
+  function updateDots(){
+    dots.forEach(function(d,i){ d.classList.toggle('active', i === current); });
   }
 
-  function startCounting() {
-    if (unlocked) return;
-    if (interval) return;
-    interval = setInterval(function() {
-      watched += 1;
-      updateUI();
-      if (watched >= REQUIRED) {
-        clearInterval(interval);
-        interval = null;
-      }
-    }, 1000);
+  function setSizes(){
+    var w = carousel.offsetWidth;
+    var slideW = w / perPage;
+    slides.forEach(function(s){ s.style.width = slideW + 'px'; });
+    if(current >= totalPages){ current = totalPages - 1; }
+    track.style.transform = 'translateX(-' + (current * w) + 'px)';
+    updateDots();
   }
 
-  function stopCounting() {
-    if (interval) { clearInterval(interval); interval = null; }
+  function goTo(index){
+    current = (index + totalPages) % totalPages;
+    var w = carousel.offsetWidth;
+    track.style.transform = 'translateX(-' + (current * w) + 'px)';
+    updateDots();
   }
 
-  window.onYouTubeIframeAPIReady = function() {
-    player = new YT.Player('yt-player', {
-      events: {
-        onStateChange: function(e) {
-          if (e.data === YT.PlayerState.PLAYING) { startCounting(); }
-          else { stopCounting(); }
+  function next(){ goTo(current + 1); }
+  function prev(){ goTo(current - 1); }
+
+  function startAuto(){
+    clearInterval(timer);
+    timer = setInterval(next, 5000);
+  }
+
+  buildDots();
+  setSizes();
+
+  window.addEventListener('resize', function(){
+    var prevPerPage = perPage;
+    buildDots();
+    if(perPage !== prevPerPage){ current = 0; }
+    setSizes();
+  });
+
+  document.getElementById('depoNext').addEventListener('click', function(){ next(); if(!paused){ startAuto(); } });
+  document.getElementById('depoPrev').addEventListener('click', function(){ prev(); if(!paused){ startAuto(); } });
+
+  pauseBtn.addEventListener('click', function(){
+    paused = !paused;
+    if(paused){ clearInterval(timer); pauseBtn.innerHTML = '&#9654; Retomar'; }
+    else{ startAuto(); pauseBtn.innerHTML = '&#9646;&#9646; Pausar'; }
+  });
+
+  startAuto();
+})();
+
+/* ── CARROSSEL TRANSFORMAÇÕES ── */
+(function(){
+  var carousel = document.getElementById('transfCarousel');
+  var track = document.getElementById('transfTrack');
+  var slides = track ? track.querySelectorAll('.transf-slide') : [];
+  var dotsContainer = document.getElementById('transfDots');
+  var prevBtn = document.getElementById('transfPrev');
+  var nextBtn = document.getElementById('transfNext');
+  var pauseBtn = document.getElementById('transfPause');
+  if(!track || !slides.length) return;
+
+  var total = slides.length; // 9 slides individuais
+  var current = 0, timer = null, paused = false;
+  var perPage = 2, totalPages = 5;
+  var dots = [];
+
+  function isMobile(){ return window.innerWidth <= 600; }
+
+  function buildDots(){
+    perPage = isMobile() ? 1 : 2;
+    totalPages = Math.ceil(total / perPage);
+    dotsContainer.innerHTML = '';
+    dots = [];
+    for(var i = 0; i < totalPages; i++){
+      var d = document.createElement('span');
+      d.className = 'depo-dot' + (i === 0 ? ' active' : '');
+      d.dataset.index = i;
+      (function(idx){ d.addEventListener('click', function(){ goTo(idx); resetAuto(); }); })(i);
+      dotsContainer.appendChild(d);
+      dots.push(d);
+    }
+  }
+
+  function updateDots(){
+    dots.forEach(function(d,i){ d.classList.toggle('active', i === current); });
+  }
+
+  function setSizes(){
+    var w = carousel.offsetWidth;
+    var slideW = w / perPage;
+    slides.forEach(function(s){ s.style.width = slideW + 'px'; });
+    if(current >= totalPages){ current = totalPages - 1; }
+    track.style.transform = 'translateX(-' + (current * w) + 'px)';
+    updateDots();
+  }
+
+  function goTo(n){
+    current = (n + totalPages) % totalPages;
+    var w = carousel.offsetWidth;
+    track.style.transform = 'translateX(-' + (current * w) + 'px)';
+    updateDots();
+  }
+
+  function next(){ goTo(current + 1); }
+  function prev(){ goTo(current - 1); }
+  function startAuto(){ clearInterval(timer); timer = setInterval(next, 5000); }
+  function stopAuto(){ clearInterval(timer); timer = null; }
+  function resetAuto(){ if(!paused){ stopAuto(); startAuto(); } }
+
+  buildDots();
+  setSizes();
+
+  window.addEventListener('resize', function(){
+    var prevPerPage = perPage;
+    buildDots();
+    if(perPage !== prevPerPage){ current = 0; }
+    setSizes();
+  });
+
+  prevBtn.addEventListener('click', function(){ prev(); resetAuto(); });
+  nextBtn.addEventListener('click', function(){ next(); resetAuto(); });
+  pauseBtn.addEventListener('click', function(){
+    paused = !paused;
+    if(paused){ stopAuto(); pauseBtn.innerHTML = '▶ RETOMAR'; }
+    else{ startAuto(); pauseBtn.innerHTML = '⏸ PAUSAR'; }
+  });
+
+  // Autoplay só começa quando a seção entra na tela
+  if('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          if(!paused) startAuto();
+        } else {
+          stopAuto();
         }
-      }
-    });
-  };
-
-  var tag = document.createElement('script');
-  tag.src = 'https://www.youtube.com/iframe_api';
-  document.head.appendChild(tag);
+      });
+    }, { threshold: 0.3 });
+    observer.observe(carousel);
+  } else {
+    startAuto();
+  }
+})();
 </script>
 
+
+
+<!-- ══════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════ -->
+<section class="s faq-s">
+  <div class="w">
+    <div class="rv" style="text-align:center;max-width:640px;margin:0 auto;">
+      <span class="eyebrow">Antes de entrar</span>
+      <h2 class="title">Perguntas <span>diretas.</span></h2>
+    </div>
+    <div class="faq-list rv d1">
+      <div class="fq">
+        <div class="fq-h"><span class="fq-txt">A consultoria é 100% online? Como funciona na prática?</span><span class="fq-ico">+</span></div>
+        <div class="fq-a"><p class="fq-ai">Sim, 100% online. Diagnóstico, prescrição e acompanhamento pelo WhatsApp e grupo exclusivo dos Caveiras. O Gaujo ajusta o treino semanalmente com base no seu feedback e evolução real, não em suposição. A distância não interfere: <strong>método não depende de presença física.</strong></p></div>
+      </div>
+      <div class="fq">
+        <div class="fq-h"><span class="fq-txt">Preciso ter experiência na academia para entrar?</span><span class="fq-ico">+</span></div>
+        <div class="fq-a"><p class="fq-ai">Não. O diagnóstico individual mapeia exatamente onde você está. Iniciante parte do zero correto. Quem já treina há anos, o diagnóstico identifica o que está travando. O que importa é disposição real para resultado e comprometimento com o processo.</p></div>
+      </div>
+      <div class="fq">
+        <div class="fq-h"><span class="fq-txt">Qual a diferença real pro personal online comum?</span><span class="fq-ico">+</span></div>
+        <div class="fq-a"><p class="fq-ai">Personal online comum entrega planilha de gaveta. O Caveira Team começa com diagnóstico postural real, prescreve com base em tensão mecânica e progressão de carga e ajusta semanalmente. <strong>É a diferença entre um produto genérico e um processo individual.</strong></p></div>
+      </div>
+      <div class="fq">
+        <div class="fq-h"><span class="fq-txt">Meu parceiro e eu podemos entrar juntos?</span><span class="fq-ico">+</span></div>
+        <div class="fq-a"><p class="fq-ai">Sim. Cada um recebe seu diagnóstico e prescrição individualizados: corpos diferentes, objetivos diferentes. Mas entram na mesma tribo, constroem o mesmo estilo de vida e se cobram mutuamente. <strong>É a combinação mais poderosa que existe: método individual + estilo de vida compartilhado.</strong></p></div>
+      </div>
+      <div class="fq">
+        <div class="fq-h"><span class="fq-txt">Por que lista de espera? Não posso começar direto?</span><span class="fq-ico">+</span></div>
+        <div class="fq-a"><p class="fq-ai">O Gaujo não aceita qualquer aluno — aceita o aluno certo. Acompanhamento real tem limite de capacidade. A lista de espera garante que cada Caveira receba o nível de entrega que a metodologia exige. <strong>Quem entra, entra pra resultado — não pra número.</strong></p></div>
+      </div>
+      <div class="fq">
+        <div class="fq-h"><span class="fq-txt">Meu objetivo é emagrecer. O método funciona?</span><span class="fq-ico">+</span></div>
+        <div class="fq-a"><p class="fq-ai">Sim. Tensão mecânica gera hipertrofia e mais músculo significa metabolismo mais rápido e emagrecimento real. Quem treina sem controlar carga perde músculo junto com gordura e fica com corpo "mole". <strong>O Método Caveira resolve isso na raiz: constrói músculo, acelera metabolismo, emagrece com consistência.</strong></p><p class="mc-tagline">Resultados de atletas em pessoas normais</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FINAL CTA
+══════════════════════════════════════════ -->
+<section class="final-s">
+  <div class="final-inner rv">
+    <span class="eyebrow" style="display:block;text-align:center;">Vagas limitadas</span>
+    <div class="final-h">Pronta para parar<br><span>de treinar no escuro?</span></div>
+    <p class="final-p">As vagas são limitadas porque o acompanhamento é individual. Quando encher, fecha. <strong>Se você chegou até aqui, você já sabe que é pra você.</strong></p>
+    <a href="https://wa.me/5581997660500?text=Ol%C3%A1%2C%20li%20tudo%20e%20quero%20entrar%20no%20Caveira%20Team!" class="btn-primary" target="_blank" rel="noopener noreferrer">💀 Caveira C</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">
+    <span>CAVEIRA TEAM 💀</span>
+  </div>
+  <div class="f-links">
+    <a href="#metodo" class="f-link">Método</a>
+    <span class="f-copy">@gaujofitness · Método Caveira</span>
+  </div>
+</footer>
+
+<script>
+// REVEAL
+const io = new IntersectionObserver(e => e.forEach(x => {if(x.isIntersecting) x.target.classList.add('on');}),{threshold:.07});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+// FAQ
+document.querySelectorAll('.fq-h').forEach(h => {
+  h.addEventListener('click', () => {
+    const item = h.parentElement;
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.fq').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.fq-a').style.maxHeight = '0';
+    });
+    if(!open){
+      item.classList.add('open');
+      item.querySelector('.fq-a').style.maxHeight = item.querySelector('.fq-a').scrollHeight + 'px';
+    }
+  });
+});
+
+// HAMBÚRGUER
+const burger = document.getElementById('navBurger');
+const navMobile = document.getElementById('navMobile');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  navMobile.classList.toggle('open');
+});
+navMobile.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    navMobile.classList.remove('open');
+  });
+});
+
+// FAQ
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if(t) t.scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
 </body>
 </html>
