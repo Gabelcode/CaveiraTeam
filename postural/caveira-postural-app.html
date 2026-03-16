@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caveira Team - Análise Postural Privada</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #0A0A0A;
+            --color-accent: #C8102E;
+            --color-light: #F0EDE8;
+            --color-dark: #1a1a1a;
+            --color-border: #333;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-dark) 100%);
+            color: var(--color-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* LOGIN PAGE */
+        .login-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-box {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--color-accent);
+            border-radius: 8px;
+            padding: 60px 40px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 0 40px rgba(200, 16, 46, 0.3);
+            text-align: center;
+        }
+
+        .login-box h1 {
+            font-family: 'Bebas Neue', Arial Black, sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .login-box p {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 40px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .login-form input {
+            padding: 14px 16px;
+            background: rgba(240, 237, 232, 0.05);
+            border: 1px solid var(--color-accent);
+            border-radius: 4px;
+            color: var(--color-light);
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .login-form input::placeholder {
+            color: #666;
+        }
+
+        .login-form input:focus {
+            outline: none;
+            background: rgba(240, 237, 232, 0.1);
+            box-shadow: 0 0 10px rgba(200, 16, 46, 0.3);
+        }
+
+        .login-form button {
+            padding: 14px;
+            background: var(--color-accent);
+            color: var(--color-light);
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-form button:hover:not(:disabled) {
+            background: #a01025;
+            transform: translateY(-2px);
+        }
+
+        .login-form button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .login-error {
+            color: #ff6b6b;
+            font-size: 12px;
+            margin-top: 12px;
+            display: none;
+        }
+
+        .login-error.show {
+            display: block;
+        }
+
+        /* APP PAGE */
+        .app-container {
+            display: none;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .app-container.active {
+            display: block;
+        }
+
+        .app-header {
+            max-width: 1400px;
+            margin: 0 auto 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--color-accent);
+            padding-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .app-header h1 {
+            font-family: 'Bebas Neue', Arial Black, sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+            text-transform: uppercase;
+        }
+
+        .app-header-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .header-btn {
+            padding: 10px 20px;
+            background: rgba(200, 16, 46, 0.2);
+            border: 1px solid var(--color-accent);
+            border-radius: 4px;
+            color: var(--color-accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .header-btn:hover {
+            background: var(--color-accent);
+            color: var(--color-light);
+        }
+
+        .app-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 40px;
+        }
+
+        /* UPLOAD SECTION */
+        .upload-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .upload-box {
+            background: rgba(200, 16, 46, 0.1);
+            border: 2px dashed var(--color-accent);
+            border-radius: 8px;
+            padding: 30px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .upload-box:hover {
+            background: rgba(200, 16, 46, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .upload-box input {
+            display: none;
+        }
+
+        .upload-label {
+            display: block;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .upload-icon {
+            font-size: 32px;
+            margin: 15px 0;
+        }
+
+        .upload-text {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .image-preview {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-top: 10px;
+            border: 1px solid var(--color-border);
+        }
+
+        .view-label {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--color-light);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* CONTROLS */
+        .controls {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .controls input {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px 16px;
+            background: rgba(240, 237, 232, 0.05);
+            border: 1px solid var(--color-accent);
+            border-radius: 4px;
+            color: var(--color-light);
+            font-size: 14px;
+        }
+
+        .controls input::placeholder {
+            color: #666;
+        }
+
+        .controls button {
+            padding: 12px 32px;
+            background: var(--color-accent);
+            color: var(--color-light);
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .controls button:hover:not(:disabled) {
+            background: #a01025;
+            transform: translateY(-2px);
+        }
+
+        .controls button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* LOADING */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            color: var(--color-accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            margin-left: 4px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* RESULTS */
+        .results {
+            display: none;
+        }
+
+        .results.active {
+            display: block;
+        }
+
+        .result-section {
+            margin-bottom: 40px;
+            background: rgba(200, 16, 46, 0.05);
+            border-left: 4px solid var(--color-accent);
+            padding: 24px;
+            border-radius: 4px;
+        }
+
+        .result-title {
+            font-family: 'Bebas Neue', Arial Black, sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+
+        .alteration {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--color-border);
+            padding: 20px;
+            margin-bottom: 16px;
+            border-radius: 4px;
+        }
+
+        .alteration-name {
+            font-weight: 700;
+            color: var(--color-accent);
+            font-size: 16px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .alteration-meta {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 4px 12px;
+            background: rgba(200, 16, 46, 0.2);
+            border: 1px solid var(--color-accent);
+            border-radius: 4px;
+            font-size: 11px;
+            color: var(--color-accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .explanation {
+            margin-bottom: 12px;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .explanation-label {
+            color: #888;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .compensation-section {
+            background: rgba(200, 16, 46, 0.1);
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 24px;
+        }
+
+        .compensation-title {
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+
+        .compensation-item {
+            padding: 8px;
+            color: #ddd;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .compensation-item::before {
+            content: '⚠ ';
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+
+        .clinical-summary {
+            background: rgba(200, 16, 46, 0.15);
+            border: 2px solid var(--color-accent);
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 24px;
+        }
+
+        .clinical-summary-title {
+            font-family: 'Bebas Neue', Arial Black, sans-serif;
+            font-size: 16px;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .clinical-summary-text {
+            font-size: 13px;
+            color: #ddd;
+            line-height: 1.7;
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .export-btn {
+            padding: 12px 20px;
+            background: rgba(200, 16, 46, 0.3);
+            border: 1px solid var(--color-accent);
+            border-radius: 4px;
+            color: var(--color-accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .export-btn:hover {
+            background: var(--color-accent);
+            color: var(--color-light);
+        }
+
+        .error {
+            display: none;
+            padding: 20px;
+            background: rgba(255, 50, 50, 0.1);
+            border: 1px solid #ff3232;
+            border-radius: 4px;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        .error.show {
+            display: block;
+        }
+
+        .success {
+            display: none;
+            padding: 20px;
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid #4caf50;
+            border-radius: 4px;
+            color: #81c784;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        .success.show {
+            display: block;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 768px) {
+            .upload-section {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            .app-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .app-header h1 {
+                font-size: 32px;
+            }
+
+            .app-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- LOGIN PAGE -->
+    <div class="login-container" id="login-page">
+        <div class="login-box">
+            <h1>💀 CAVEIRA</h1>
+            <p>Análise Postural Privada</p>
+            <form class="login-form" onsubmit="handleLogin(event)">
+                <input type="email" id="login-email" placeholder="Seu email" required>
+                <input type="password" id="login-password" placeholder="Senha" required>
+                <button type="submit" id="login-btn">Entrar</button>
+                <div class="login-error" id="login-error"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- APP PAGE -->
+    <div class="app-container" id="app-page">
+        <div class="app-header">
+            <h1>💀 Análise Postural</h1>
+            <div class="app-header-actions">
+                <button class="header-btn" onclick="resetForm()">Nova Análise</button>
+                <button class="header-btn" onclick="logout()">Sair</button>
+            </div>
+        </div>
+
+        <div class="app-content">
+            <div class="error" id="error-message"></div>
+            <div class="success" id="success-message"></div>
+
+            <div class="upload-section">
+                <div class="upload-box" onclick="document.getElementById('frontal').click()">
+                    <input type="file" id="frontal" accept="image/*">
+                    <div class="upload-label">Vista Frontal</div>
+                    <div class="upload-icon">📷</div>
+                    <img id="frontal-preview" class="image-preview" style="display: none;">
+                    <div class="upload-text">Clique ou arraste</div>
+                    <div class="view-label">FRENTE</div>
+                </div>
+
+                <div class="upload-box" onclick="document.getElementById('lateral').click()">
+                    <input type="file" id="lateral" accept="image/*">
+                    <div class="upload-label">Vista Lateral</div>
+                    <div class="upload-icon">📷</div>
+                    <img id="lateral-preview" class="image-preview" style="display: none;">
+                    <div class="upload-text">Clique ou arraste</div>
+                    <div class="view-label">LATERAL</div>
+                </div>
+
+                <div class="upload-box" onclick="document.getElementById('posterior').click()">
+                    <input type="file" id="posterior" accept="image/*">
+                    <div class="upload-label">Vista Posterior</div>
+                    <div class="upload-icon">📷</div>
+                    <img id="posterior-preview" class="image-preview" style="display: none;">
+                    <div class="upload-text">Clique ou arraste</div>
+                    <div class="view-label">COSTAS</div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <input type="text" id="student-name" placeholder="Nome do Aluno">
+                <button id="analyze-btn" onclick="analyzePosture()">Analisar Postura</button>
+            </div>
+
+            <div class="loading" id="loading">
+                <span>Analisando Postura</span>
+            </div>
+
+            <div class="results" id="results"></div>
+
+            <div class="footer">
+                <span style="color: var(--color-accent);">💀</span> Caveira Team <span style="color: var(--color-accent);">👊</span> Método Caveira <span style="color: var(--color-accent);">🏴‍☠️</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // CONFIG
+        const MASTER_EMAIL = 'gaujo.caveira@gmail.com';
+        const MASTER_PASSWORD = 'CaveiraPosto2025!';
+
+        // STATE
+        let isLoggedIn = false;
+        let currentAnalysis = null;
+
+        // INIT
+        document.addEventListener('DOMContentLoaded', () => {
+            checkAuth();
+            setupFileUploads();
+        });
+
+        function checkAuth() {
+            const auth = localStorage.getItem('caveira-auth');
+            if (auth && auth === 'true') {
+                isLoggedIn = true;
+                showApp();
+            } else {
+                showLogin();
+            }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const errorDiv = document.getElementById('login-error');
+            const loginBtn = document.getElementById('login-btn');
+
+            errorDiv.classList.remove('show');
+
+            if (email === MASTER_EMAIL && password === MASTER_PASSWORD) {
+                localStorage.setItem('caveira-auth', 'true');
+                isLoggedIn = true;
+                showApp();
+            } else {
+                errorDiv.textContent = 'Email ou senha incorretos';
+                errorDiv.classList.add('show');
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('caveira-auth');
+            isLoggedIn = false;
+            document.getElementById('login-email').value = '';
+            document.getElementById('login-password').value = '';
+            showLogin();
+            resetForm();
+        }
+
+        function showLogin() {
+            document.getElementById('login-page').style.display = 'flex';
+            document.getElementById('app-page').classList.remove('active');
+        }
+
+        function showApp() {
+            document.getElementById('login-page').style.display = 'none';
+            document.getElementById('app-page').classList.add('active');
+        }
+
+        function setupFileUploads() {
+            ['frontal', 'lateral', 'posterior'].forEach(id => {
+                document.getElementById(id).addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                            document.getElementById(`${id}-preview`).src = event.target.result;
+                            document.getElementById(`${id}-preview`).style.display = 'block';
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            });
+        }
+
+        async function analyzePosture() {
+            const studentName = document.getElementById('student-name').value.trim() || 'Aluno';
+            const frontalFile = document.getElementById('frontal').files[0];
+            const lateralFile = document.getElementById('lateral').files[0];
+            const posteriorFile = document.getElementById('posterior').files[0];
+
+            if (!frontalFile && !lateralFile && !posteriorFile) {
+                showError('Envie pelo menos uma foto para análise');
+                return;
+            }
+
+            hideError();
+            document.getElementById('loading').classList.add('active');
+            document.getElementById('results').classList.remove('active');
+            document.getElementById('analyze-btn').disabled = true;
+
+            try {
+                const analysisPrompt = `Você é um especialista em Posturologia aplicado ao treinamento de musculação no padrão Caveira Team.
+
+Analise as fotos posturais enviadas e produza uma avaliação completa seguindo este formato EXATO em JSON:
+
+{
+  "student_name": "${studentName}",
+  "analysis_date": "${new Date().toLocaleDateString('pt-BR')}",
+  "alterations": [
+    {
+      "name": "Nome da alteração",
+      "classification": "Leve/Moderada/Severa",
+      "identified_in": "Frontal/Lateral/Posterior",
+      "technical_explanation": "Explicação biomecânica detalhada",
+      "student_explanation": "Explicação simples e didática para o aluno"
+    }
+  ],
+  "compensations": [
+    "Compensação prevista 1",
+    "Compensação prevista 2"
+  ],
+  "clinical_summary": "Resumo clínico da avaliação com prescrição de foco principal"
+}
+
+Priorize:
+- Identificar alterações REAIS com base em biomecânica
+- Classificar gravidade adequadamente
+- Prever compensações futuras
+- Focar em tensão mecânica e eficiência de treino
+- Linguagem técnica mas acessível`;
+
+                const imagePrompts = [];
+                if (frontalFile) {
+                    const data = await fileToBase64(frontalFile);
+                    imagePrompts.push({
+                        type: "image",
+                        source: { type: "base64", media_type: frontalFile.type, data }
+                    });
+                }
+                if (lateralFile) {
+                    const data = await fileToBase64(lateralFile);
+                    imagePrompts.push({
+                        type: "image",
+                        source: { type: "base64", media_type: lateralFile.type, data }
+                    });
+                }
+                if (posteriorFile) {
+                    const data = await fileToBase64(posteriorFile);
+                    imagePrompts.push({
+                        type: "image",
+                        source: { type: "base64", media_type: posteriorFile.type, data }
+                    });
+                }
+
+                const response = await fetch("https://api.anthropic.com/v1/messages", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        model: "claude-sonnet-4-20250514",
+                        max_tokens: 2000,
+                        messages: [
+                            {
+                                role: "user",
+                                content: [
+                                    ...imagePrompts,
+                                    { type: "text", text: analysisPrompt }
+                                ]
+                            }
+                        ],
+                    })
+                });
+
+                const data = await response.json();
+                const responseText = data.content[0].text;
+
+                const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+                if (!jsonMatch) {
+                    throw new Error('Resposta inválida do servidor');
+                }
+
+                const analysis = JSON.parse(jsonMatch[0]);
+                currentAnalysis = analysis;
+                displayResults(analysis);
+                document.getElementById('results').classList.add('active');
+                showSuccess('Análise concluída com sucesso!');
+            } catch (error) {
+                console.error('Erro:', error);
+                showError('Erro ao analisar. Tente novamente.');
+            } finally {
+                document.getElementById('loading').classList.remove('active');
+                document.getElementById('analyze-btn').disabled = false;
+            }
+        }
+
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result.split(',')[1]);
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function displayResults(analysis) {
+            let html = `
+                <div class="result-section">
+                    <div class="result-title">📋 Avaliação Postural – ${analysis.student_name}</div>
+                    <p style="font-size: 12px; color: #888; margin-bottom: 24px;">Data: ${analysis.analysis_date}</p>
+            `;
+
+            analysis.alterations.forEach((alt, index) => {
+                html += `
+                    <div class="alteration">
+                        <div class="alteration-name">${index + 1}. ${alt.name}</div>
+                        <div class="alteration-meta">
+                            <span class="badge">${alt.classification}</span>
+                            <span class="badge">${alt.identified_in}</span>
+                        </div>
+                        <div class="explanation">
+                            <div class="explanation-label">🔬 Explicação Técnica</div>
+                            ${alt.technical_explanation}
+                        </div>
+                        <div class="explanation">
+                            <div class="explanation-label">👤 Para Você</div>
+                            ${alt.student_explanation}
+                        </div>
+                    </div>
+                `;
+            });
+
+            if (analysis.compensations && analysis.compensations.length > 0) {
+                html += `
+                    <div class="compensation-section">
+                        <div class="compensation-title">⚠ Compensações Previstas</div>
+                `;
+                analysis.compensations.forEach(comp => {
+                    html += `<div class="compensation-item">${comp}</div>`;
+                });
+                html += `</div>`;
+            }
+
+            html += `
+                    <div class="clinical-summary">
+                        <div class="clinical-summary-title">📊 Resumo Clínico</div>
+                        <div class="clinical-summary-text">${analysis.clinical_summary}</div>
+                    </div>
+
+                    <div class="export-buttons">
+                        <button class="export-btn" onclick="exportAsMarkdown()">📄 Baixar MD</button>
+                        <button class="export-btn" onclick="exportAsText()">📋 Baixar TXT</button>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('results').innerHTML = html;
+        }
+
+        function exportAsMarkdown() {
+            if (!currentAnalysis) return;
+
+            const a = currentAnalysis;
+            let content = `# 📋 Avaliação Postural - ${a.student_name}\n\n`;
+            content += `**Data:** ${a.analysis_date}\n\n`;
+            content += `---\n\n`;
+
+            content += `## Alterações Identificadas\n\n`;
+            a.alterations.forEach((alt, i) => {
+                content += `### ${i + 1}. ${alt.name}\n\n`;
+                content += `- **Classificação:** ${alt.classification}\n`;
+                content += `- **Identificado em:** ${alt.identified_in}\n\n`;
+                content += `#### Explicação Técnica\n${alt.technical_explanation}\n\n`;
+                content += `#### Explicação para o Aluno\n${alt.student_explanation}\n\n`;
+            });
+
+            if (a.compensations && a.compensations.length > 0) {
+                content += `## ⚠️ Compensações Previstas\n\n`;
+                a.compensations.forEach(comp => {
+                    content += `- ${comp}\n`;
+                });
+                content += `\n`;
+            }
+
+            content += `## 📊 Resumo Clínico\n\n${a.clinical_summary}\n\n`;
+            content += `---\n\n**Caveira Team** • Análise Postural Premium`;
+
+            downloadFile(content, `${a.student_name}-avaliacao.md`, 'text/markdown');
+        }
+
+        function exportAsText() {
+            if (!currentAnalysis) return;
+
+            const a = currentAnalysis;
+            let content = `AVALIAÇÃO POSTURAL - ${a.student_name.toUpperCase()}\n`;
+            content += `Data: ${a.analysis_date}\n`;
+            content += `${'='.repeat(60)}\n\n`;
+
+            content += `ALTERAÇÕES IDENTIFICADAS\n${'-'.repeat(60)}\n\n`;
+            a.alterations.forEach((alt, i) => {
+                content += `${i + 1}. ${alt.name}\n`;
+                content += `   Classificação: ${alt.classification}\n`;
+                content += `   Identificado em: ${alt.identified_in}\n\n`;
+                content += `   EXPLICAÇÃO TÉCNICA:\n   ${alt.technical_explanation}\n\n`;
+                content += `   EXPLICAÇÃO PARA O ALUNO:\n   ${alt.student_explanation}\n\n`;
+            });
+
+            if (a.compensations && a.compensations.length > 0) {
+                content += `${'='.repeat(60)}\n`;
+                content += `COMPENSAÇÕES PREVISTAS\n${'-'.repeat(60)}\n\n`;
+                a.compensations.forEach(comp => {
+                    content += `⚠ ${comp}\n`;
+                });
+                content += `\n`;
+            }
+
+            content += `${'='.repeat(60)}\n`;
+            content += `RESUMO CLÍNICO\n${'-'.repeat(60)}\n\n${a.clinical_summary}\n`;
+            content += `\n${'='.repeat(60)}\nCaveira Team • Análise Postural Premium`;
+
+            downloadFile(content, `${a.student_name}-avaliacao.txt`, 'text/plain');
+        }
+
+        function downloadFile(content, filename, type) {
+            const blob = new Blob([content], { type: type });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+
+        function resetForm() {
+            ['frontal', 'lateral', 'posterior'].forEach(id => {
+                document.getElementById(id).value = '';
+                document.getElementById(`${id}-preview`).style.display = 'none';
+            });
+            document.getElementById('student-name').value = '';
+            document.getElementById('results').classList.remove('active');
+            hideError();
+            currentAnalysis = null;
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = message;
+            errorDiv.classList.add('show');
+        }
+
+        function hideError() {
+            document.getElementById('error-message').classList.remove('show');
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.getElementById('success-message');
+            successDiv.textContent = message;
+            successDiv.classList.add('show');
+            setTimeout(() => {
+                successDiv.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
