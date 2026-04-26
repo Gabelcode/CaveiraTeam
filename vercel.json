@@ -4,6 +4,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
+    { "source": "/bio", "destination": "/bio.html" },
     { "source": "/:path*", "destination": "/index.html" }
   ]
 }
