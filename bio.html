@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gabriel Araújo · Caveira Team</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💀</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --r:#CC0000;--rb:#E8000A;
+  --k:#080808;--k2:#0D0D0D;--k3:#111;--k4:#181818;--k5:#1F1F1F;
+  --w:#F0EDE8;--w2:#B0ADA8;--w3:#5A5855;
+  --f-head:'Bebas Neue',sans-serif;
+  --f-cond:'Barlow Condensed',sans-serif;
+  --f-body:'Barlow',sans-serif;
+}
+html{scroll-behavior:smooth;font-size:16px;}
+body{
+  background:var(--k);color:var(--w);
+  font-family:var(--f-body);
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;
+  padding:48px 20px 64px;
+}
+
+/* GRAIN */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
+  opacity:.032;pointer-events:none;z-index:9000;mix-blend-mode:overlay;
+}
+
+.container{
+  width:100%;max-width:480px;
+  display:flex;flex-direction:column;align-items:center;
+  position:relative;z-index:1;
+}
+
+/* AVATAR */
+.avatar-wrap{
+  width:100px;height:100px;border-radius:50%;
+  border:3px solid var(--r);
+  overflow:hidden;
+  margin-bottom:20px;
+  flex-shrink:0;
+}
+.avatar-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;}
+
+/* NAME */
+.bio-name{
+  font-family:var(--f-head);font-size:28px;letter-spacing:3px;
+  color:var(--w);text-align:center;line-height:1;
+  margin-bottom:6px;
+}
+.bio-role{
+  font-family:var(--f-cond);font-size:13px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--r);
+  text-align:center;margin-bottom:8px;
+}
+.bio-desc{
+  font-family:var(--f-cond);font-size:15px;color:var(--w2);
+  text-align:center;line-height:1.55;max-width:340px;
+  margin-bottom:36px;
+}
+
+/* CARDS */
+.cards{width:100%;display:flex;flex-direction:column;gap:14px;margin-bottom:40px;}
+
+.card{
+  display:flex;align-items:center;gap:16px;
+  background:var(--k2);
+  border:1px solid var(--k4);
+  border-left:3px solid var(--r);
+  padding:18px 20px;
+  text-decoration:none;
+  transition:background .2s,transform .15s,box-shadow .2s;
+  position:relative;overflow:hidden;
+}
+.card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.04) 50%,transparent 70%);
+  transform:translateX(-100%);transition:transform .4s;
+}
+.card:hover::after{transform:translateX(100%);}
+.card:hover{
+  background:var(--k3);
+  transform:translateY(-2px);
+  box-shadow:0 8px 32px rgba(204,0,0,.18);
+}
+
+.card-icon{
+  font-size:28px;flex-shrink:0;
+  width:48px;text-align:center;
+}
+.card-body{flex:1;}
+.card-title{
+  font-family:var(--f-cond);font-size:17px;font-weight:700;
+  color:var(--w);letter-spacing:.5px;line-height:1.2;
+  display:block;margin-bottom:3px;
+}
+.card-sub{
+  font-family:var(--f-cond);font-size:13px;
+  color:var(--w2);line-height:1.4;display:block;
+}
+.card-arrow{
+  font-size:18px;color:var(--r);flex-shrink:0;
+  transition:transform .2s;
+}
+.card:hover .card-arrow{transform:translateX(4px);}
+
+/* CARD DESTAQUE (1º) */
+.card.primary{
+  background:var(--r);border-color:var(--r);border-left-color:rgba(255,255,255,.3);
+}
+.card.primary .card-title{color:var(--w);}
+.card.primary .card-sub{color:rgba(255,255,255,.75);}
+.card.primary .card-arrow{color:var(--w);}
+.card.primary:hover{background:var(--rb);box-shadow:0 8px 32px rgba(204,0,0,.4);}
+
+/* DIVIDER */
+.divider{
+  width:40px;height:2px;background:var(--k4);
+  margin:0 auto 32px;
+}
+
+/* SOCIAL */
+.social-label{
+  font-family:var(--f-cond);font-size:11px;letter-spacing:4px;
+  text-transform:uppercase;color:var(--w3);
+  text-align:center;margin-bottom:16px;
+}
+.social-links{display:flex;gap:16px;align-items:center;margin-bottom:40px;}
+.social-link{
+  width:44px;height:44px;background:var(--k2);
+  border:1px solid var(--k4);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;font-size:20px;
+  transition:background .2s,border-color .2s,transform .15s;
+}
+.social-link:hover{background:var(--k4);border-color:var(--r);transform:translateY(-2px);}
+
+/* FOOTER */
+.bio-footer{
+  font-family:var(--f-cond);font-size:11px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--w3);text-align:center;
+}
+.bio-footer span{color:var(--r);}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="avatar-wrap">
+    <img src="perfil.png" alt="Gabriel Araújo · Gaujo Caveira">
+  </div>
+
+  <div class="bio-name">GABRIEL ARAÚJO</div>
+  <div class="bio-role">Gaujo Caveira · Profissional de Ed. Física</div>
+  <p class="bio-desc">Método Caveira — resultados de atletas em pessoas normais. Low volume. Alta intensidade.</p>
+
+  <div class="cards">
+
+    <!-- Card 1: Caveira Team -->
+    <a href="https://wa.me/5581994998661?text=Ol%C3%A1%2C%20quero%20fazer%20parte%20do%20Caveira%20Team!" class="card primary" target="_blank" rel="noopener noreferrer">
+      <div class="card-icon">💀</div>
+      <div class="card-body">
+        <span class="card-title">Faça parte do Caveira Team</span>
+        <span class="card-sub">Consultoria individual · Vagas limitadas</span>
+      </div>
+      <span class="card-arrow">→</span>
+    </a>
+
+    <!-- Card 2: Protocolo Start -->
+    <a href="https://pay.kiwify.com.br/udh7yPn" class="card" target="_blank" rel="noopener noreferrer">
+      <div class="card-icon">📋</div>
+      <div class="card-body">
+        <span class="card-title">Protocolo Start</span>
+        <span class="card-sub">Sua primeira planilha de treino que funciona</span>
+      </div>
+      <span class="card-arrow">→</span>
+    </a>
+
+    <!-- Card 3: Site -->
+    <a href="/" class="card" rel="noopener noreferrer">
+      <div class="card-icon">🏴‍☠️</div>
+      <div class="card-body">
+        <span class="card-title">Conheça mais meu trabalho</span>
+        <span class="card-sub">caveirateam.com.br</span>
+      </div>
+      <span class="card-arrow">→</span>
+    </a>
+
+  </div>
+
+  <div class="divider"></div>
+  <div class="social-label">Redes sociais</div>
+  <div class="social-links">
+    <a href="https://instagram.com/gaujofitness" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F0EDE8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="#F0EDE8" stroke="none"/></svg>
+    </a>
+    <a href="https://tiktok.com/@gaujofitness" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#F0EDE8"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+    </a>
+  </div>
+
+  <div class="bio-footer">CAVEIRA TEAM <span>💀</span> @gaujofitness</div>
+
+</div>
+</body>
+</html>
