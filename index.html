@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gabriel Araújo · Caveira Team</title>
+<title>Caveira Team · Método Caveira · Gaujo Caveira</title>
+<meta name="description" content="Consultoria fitness premium para mulheres que treinam há anos e não enxergam resultado. Método Caveira. Desperte o Caos.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💀</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
@@ -212,7 +213,7 @@ h2.title span{color:var(--r);}
 }
 .dor-cta-strip a:hover{background:var(--k3);}
 
-/* ── RISCO INVISÍVEL (nova seção) ── */
+/* ── RISCO INVISÍVEL ── */
 .risco-s{background:var(--k2);}
 .risco-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px;}
 .risco-card{background:var(--k);padding:40px 32px;position:relative;overflow:hidden;transition:background .2s;}
@@ -223,6 +224,10 @@ h2.title span{color:var(--r);}
 .risco-card h3{font-family:var(--f-head);font-size:26px;letter-spacing:.5px;color:var(--w);margin-bottom:12px;}
 .risco-card p{font-size:15px;line-height:1.8;color:var(--w2);}
 .risco-card p strong{color:var(--r);}
+.risco-card .risco-feeling{
+  margin-top:18px;padding-top:18px;border-top:1px solid var(--k4);
+  font-family:var(--f-cond);font-size:14px;font-style:italic;color:var(--w);line-height:1.5;
+}
 .risco-bottom{
   margin-top:48px;padding:32px;
   background:rgba(204,0,0,.08);
@@ -327,6 +332,16 @@ h2.title span{color:var(--r);}
 .transf-item:hover img{transform:scale(1.04);}
 @media(max-width:900px){.transf-s{padding:60px 24px;}}
 
+/* ── PORTA TRIBAL ── */
+.porta-s{background:var(--k);padding:88px 80px;position:relative;overflow:hidden;}
+.porta-s::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 100%,rgba(204,0,0,.08) 0%,transparent 60%);pointer-events:none;}
+.porta-inner{max-width:760px;margin:0 auto;text-align:center;position:relative;z-index:1;}
+.porta-symbol{font-size:42px;margin-bottom:20px;display:block;opacity:.8;}
+.porta-h{font-family:var(--f-head);font-size:clamp(40px,5vw,64px);color:var(--w);line-height:1;letter-spacing:.5px;margin-bottom:24px;}
+.porta-h span{color:var(--r);display:block;}
+.porta-p{font-family:var(--f-cond);font-size:18px;color:var(--w2);line-height:1.7;max-width:600px;margin:0 auto;}
+.porta-p strong{color:var(--w);}
+
 /* ── FAQ ── */
 .faq-s{background:var(--k2);}
 .faq-list{max-width:820px;margin:48px auto 0;display:flex;flex-direction:column;gap:2px;}
@@ -370,14 +385,27 @@ h2.title span{color:var(--r);}
 .btn-cta-full{display:block;width:100%;text-align:center;box-sizing:border-box;}
 
 /* ── FOOTER ── */
-footer{background:rgba(8,8,8,.92);border-top:1px solid var(--k4);backdrop-filter:blur(12px);padding:0 56px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
-.f-logo{display:flex;align-items:center;}
-.f-logo span{font-family:var(--f-head);font-size:22px;letter-spacing:3px;color:var(--w);white-space:nowrap;}
-.f-links{display:flex;align-items:center;gap:32px;}
+footer{
+  background:rgba(8,8,8,.92);
+  border-top:1px solid var(--k4);
+  backdrop-filter:blur(12px);
+  padding:32px 56px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  flex-wrap:wrap;
+}
+.f-logo{display:flex;flex-direction:column;align-items:flex-start;gap:6px;}
+.f-logo .f-brand{font-family:var(--f-head);font-size:22px;letter-spacing:3px;color:var(--w);white-space:nowrap;}
+.f-logo .f-tagline{font-family:var(--f-cond);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--r);}
+.f-middle{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.f-slogan{font-family:var(--f-head);font-size:18px;letter-spacing:4px;color:var(--r);}
+.f-handle{font-family:var(--f-cond);font-size:11px;letter-spacing:2px;color:var(--w3);}
+.f-right{display:flex;align-items:center;gap:24px;}
 .f-link{font-family:var(--f-cond);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--w2);text-decoration:none;transition:color .15s;}
 .f-link:hover{color:var(--w);}
-.f-copy{font-family:var(--f-cond);font-size:11px;letter-spacing:2px;color:var(--w3);text-transform:uppercase;}
-@media(max-width:700px){footer{padding:0 24px;height:auto;padding-top:20px;padding-bottom:20px;flex-wrap:wrap;}.f-links{gap:16px;}.f-copy{display:none;}}
+@media(max-width:700px){
+  footer{padding:24px;flex-direction:column;text-align:center;gap:20px;}
+  .f-logo{align-items:center;}
+}
 
 /* ── REVEAL ── */
 .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
@@ -394,6 +422,7 @@ footer{background:rgba(8,8,8,.92);border-top:1px solid var(--k4);backdrop-filter
   .dor-cta-strip a{width:100%;text-align:center;}
   .risco-cards{grid-template-columns:1fr;}
   .risco-bottom{flex-direction:column;}
+  .porta-s{padding:60px 24px;}
 }
 @media(max-width:1024px){
   nav{padding:0 20px;}
@@ -409,7 +438,6 @@ footer{background:rgba(8,8,8,.92);border-top:1px solid var(--k4);backdrop-filter
   .metodo-grid{grid-template-columns:1fr;gap:40px;}
   .final-s{padding:80px 24px;}
   .modal-box{padding:2rem;max-width:90%;}
-  footer{padding:28px 24px;flex-direction:column;text-align:center;}
 }
 </style>
 </head>
@@ -467,8 +495,8 @@ footer{background:rgba(8,8,8,.92);border-top:1px solid var(--k4);backdrop-filter
 <div class="stats">
   <div class="stat"><span class="stat-n">+140</span><span class="stat-l">Caveiras Transformadas</span></div>
   <div class="stat"><span class="stat-n">100%</span><span class="stat-l">Diagnóstico Individual</span></div>
-  <div class="stat"><span class="stat-n">Low</span><span class="stat-l">Volume · Alta Intensidade</span></div>
-  <div class="stat"><span class="stat-n">💀</span><span class="stat-l">Método Próprio</span></div>
+  <div class="stat"><span class="stat-n">💀</span><span class="stat-l">Método Próprio · Low Volume</span></div>
+  <div class="stat"><span class="stat-n">10+</span><span class="stat-l">Anos de Método</span></div>
 </div>
 
 <!-- MARQUEE -->
@@ -497,7 +525,7 @@ footer{background:rgba(8,8,8,.92);border-top:1px solid var(--k4);backdrop-filter
     <div class="rv">
       <span class="eyebrow">Sem filtro</span>
       <h2 class="title">Você se <span>reconhece</span><br>aqui?</h2>
-      <p class="sub">Não estamos falando só de iniciante. Estamos falando de quem já treina — e mesmo assim não vê resultado.</p>
+      <p class="sub">A Caveira Team não é pra todas. É pra quem já treina — e mesmo assim não vê resultado.</p>
     </div>
     <div class="dor-grid rv d1">
       <div class="dor-col">
@@ -512,7 +540,7 @@ footer{background:rgba(8,8,8,.92);border-top:1px solid var(--k4);backdrop-filter
       <div class="dor-col">
         <span class="dor-col-h x">✗ Isso não é pra você</span>
         <div class="dor-item x-item"><span class="dor-ico">✗</span><span>Busca atalho, milagre ou resultado sem esforço real</span></div>
-        <div class="dor-item x-item"><span class="dor-ico">✗</span><span>Prefere treino fofo, queimação sem tensão mecânica</span></div>
+        <div class="dor-item x-item"><span class="dor-ico">✗</span><span>Prefere treino brando, sem intensidade ou tensão mecânica</span></div>
         <div class="dor-item x-item"><span class="dor-ico">✗</span><span>Não aceita ser cobrada ou se comprometer com o processo</span></div>
         <div class="dor-item x-item"><span class="dor-ico">✗</span><span>Quer motivação vazia em vez de método real</span></div>
         <div class="dor-item x-item"><span class="dor-ico">✗</span><span>Quer treino de internet com biomecânica de circo</span></div>
@@ -525,7 +553,7 @@ footer{background:rgba(8,8,8,.92);border-top:1px solid var(--k4);backdrop-filter
   </div>
 </section>
 
-<!-- ══ RISCO INVISÍVEL — nova seção de assimetria ══ -->
+<!-- ══ RISCO INVISÍVEL ══ -->
 <section class="s risco-s">
   <div class="w">
     <div class="rv">
@@ -539,18 +567,21 @@ footer{background:rgba(8,8,8,.92);border-top:1px solid var(--k4);backdrop-filter
         <span class="risco-icon">⏱️</span>
         <h3>Descanso curto entre séries</h3>
         <p>Reduzir o intervalo para "suar mais" é um dos erros mais caros do fitness. Menos descanso = menos carga = <strong>menos tensão mecânica = menos músculo.</strong> O mercado vende isso como intensidade. É o oposto disso.</p>
+        <p class="risco-feeling">É por isso que você sai da academia exausta e o corpo continua igual no espelho.</p>
       </div>
       <div class="risco-card">
         <div class="risco-card-line"></div>
         <span class="risco-icon">📋</span>
         <h3>Treino sem diagnóstico</h3>
         <p>Planilha sem avaliação postural é chute. Desequilíbrios musculares que travam sua evolução ou causam dor <strong>passam despercebidos por anos</strong> enquanto você se esforça do jeito errado.</p>
+        <p class="risco-feeling">É por isso que você sente que está fazendo "alguma coisa errada" — mas ninguém sabe te dizer o quê.</p>
       </div>
       <div class="risco-card">
         <div class="risco-card-line"></div>
         <span class="risco-icon">📉</span>
         <h3>Volume sem progressão de carga</h3>
         <p>Fazer os mesmos exercícios com o mesmo peso toda semana não é disciplina. <strong>É manutenção disfarçada de evolução.</strong> Se a carga não aumenta, o músculo não cresce. É lei da fisiologia.</p>
+        <p class="risco-feeling">É por isso que faz 2 anos que você "treina" e o corpo não reconhece a diferença.</p>
       </div>
     </div>
     <div class="risco-bottom rv d2">
@@ -581,17 +612,17 @@ footer{background:rgba(8,8,8,.92);border-top:1px solid var(--k4);backdrop-filter
         </div>
       </div>
       <div class="gaujo-body">
-        <p>Começou a treinar em casa aos 13 anos. Desde os 15, sabia que queria transformar vidas através do exercício baseado em ciência. <strong>Entrou na faculdade de Educação Física aos 18. Hoje coloca tudo em prática, explica o porquê de cada coisa e acompanha até a caveira ficar feliz ao se olhar no espelho.</strong></p>
-        <p>Casado com Maria Eduarda — a Sra. Caveira. Constroem juntos o mesmo estilo de vida que prescreve para os caveiras: planejamento, execução e consistência. <strong>Quando os dois vivem o método, o método é real.</strong></p>
+        <p>Começou a treinar em casa aos 13 anos. Desde os 15, sabia que queria transformar corpos através de ciência aplicada. <strong>Entrou na faculdade de Educação Física aos 18. Hoje coloca tudo em prática, explica o porquê de cada coisa e acompanha até a Caveira se reconhecer no espelho.</strong></p>
+        <p>Casado com Maria Eduarda — a Sra. Caveira. Constroem juntos o mesmo estilo de vida que prescreve para as Caveiras: planejamento, execução e consistência. <strong>Quando os dois vivem o método, o método é real.</strong></p>
         <div class="gaujo-quote">
           <p>"O mercado não erra por falta de acesso à ciência. Erra por não saber adaptar o que a ciência diz para a pessoa real — aquela que não é atleta, que não vive do esporte, mas quer se sentir bem com o próprio corpo."</p>
         </div>
-        <p>Direto, maduro, técnico, implacável com a excelência. Exigente — <strong>não por arrogância, mas porque sabe com clareza o que pode extrair de cada aluno.</strong></p>
+        <p>Direto, maduro, técnico, implacável com a excelência. Exigente — <strong>não por arrogância, mas porque sabe com clareza o que pode extrair de cada Caveira.</strong></p>
         <div class="gaujo-creds">
           <div class="gc">Profissional de educação física especializado em hipertrofia</div>
           <div class="gc">Mais de 10 anos de relação com o movimento</div>
           <div class="gc">Criador do Método Caveira — low volume, alta intensidade</div>
-          <div class="gc">+140 transformações documentadas</div>
+          <div class="gc">+140 Caveiras transformadas</div>
           <div class="gc mc-tagline">"O treinador que finalmente me fez evoluir de verdade."</div>
         </div>
       </div>
@@ -606,7 +637,7 @@ footer{background:rgba(8,8,8,.92);border-top:1px solid var(--k4);backdrop-filter
       <div>
         <span class="metodo-left-label">A base de tudo</span>
         <div class="metodo-big">O Método<br>Caveira.</div>
-        <p class="metodo-note">Ciência aplicada à pessoa comum. Não ao atleta. A você.</p>
+        <p class="metodo-note">Ciência aplicada ao seu corpo. Não ao do atleta. Ao seu.</p>
       </div>
       <div class="metodo-items">
         <div class="mi">
@@ -628,7 +659,7 @@ footer{background:rgba(8,8,8,.92);border-top:1px solid var(--k4);backdrop-filter
           <div>
             <span class="mi-title">Ciência adaptada para você, não para o manual.</span>
             <p class="mi-desc">O erro do mercado não é ignorar a ciência. É não saber aplicar para quem não é atleta profissional. <strong>O Método Caveira adapta princípios reais de hipertrofia para a sua rotina, o seu corpo e os seus objetivos</strong> — seja você sozinha ou construindo esse processo com seu parceiro ao lado.</p>
-            <p class="mc-tagline">Resultados de atletas em pessoas normais</p>
+            <p class="mc-tagline">Método Caveira · Desperte o Caos</p>
           </div>
         </div>
       </div>
@@ -697,11 +728,11 @@ footer{background:rgba(8,8,8,.92);border-top:1px solid var(--k4);backdrop-filter
         <div class="pilar-line"></div>
         <span class="pilar-n">03</span>
         <span class="pilar-t">Acompanhamento Contínuo</span>
-        <p class="pilar-d">Ajustes semanais baseados na sua evolução real. Suporte direto com o Gaujo. Grupo exclusivo do Caveira Team. <strong>O treino não é entregue e abandonado — é gerenciado até você ficar feliz ao se olhar no espelho.</strong></p>
+        <p class="pilar-d">Ajustes semanais baseados na sua evolução real. Suporte direto com o Gaujo. Grupo exclusivo das Caveiras. <strong>O treino não é entregue e abandonado — é gerenciado até você se reconhecer no espelho.</strong></p>
         <div class="pilar-list">
           <span class="pl">Ajustes semanais por evolução</span>
           <span class="pl">Suporte direto com o Gaujo</span>
-          <span class="pl">Grupo exclusivo dos Caveiras 💀</span>
+          <span class="pl">Grupo exclusivo das Caveiras 💀</span>
         </div>
       </div>
     </div>
@@ -773,7 +804,7 @@ footer{background:rgba(8,8,8,.92);border-top:1px solid var(--k4);backdrop-filter
         </div></div>
         <div class="depo-slide"><div class="dc">
           <div class="dc-stars">★★★★★</div>
-          <p class="dc-text">"Me sentia estagnada, meu peso não alterava, não via resultado. Depois que entrei no time, tudo mudou. <strong>Força 10/10, corpo modelando, e agora sei exatamente o que estou fazendo.</strong> Escolhi os profissionais certos."</p>
+          <p class="dc-text">"Me sentia estagnada, meu peso não alterava, não via resultado. Depois que entrei na tribo, tudo mudou. <strong>Força 10/10, corpo modelando, e agora sei exatamente o que estou fazendo.</strong> Escolhi os profissionais certos."</p>
           <div class="dc-foot">
             <div class="dc-av"><img src="adriele1.png" alt="Adriele Sales"></div>
             <div><span class="dc-name">Adriele Sales</span><span class="dc-meta">90 dias · Força &amp; Definição</span></div>
@@ -813,21 +844,21 @@ footer{background:rgba(8,8,8,.92);border-top:1px solid var(--k4);backdrop-filter
 <section class="s faq-s">
   <div class="w">
     <div class="rv" style="text-align:center;max-width:640px;margin:0 auto;">
-      <span class="eyebrow">Antes de entrar</span>
+      <span class="eyebrow">Antes de atravessar</span>
       <h2 class="title">Perguntas <span>diretas.</span></h2>
     </div>
     <div class="faq-list rv d1">
       <div class="fq">
         <div class="fq-h"><span class="fq-txt">A consultoria é 100% online? Como funciona na prática?</span><span class="fq-ico">+</span></div>
-        <div class="fq-a"><p class="fq-ai">Sim, 100% online. Diagnóstico, prescrição e acompanhamento pelo WhatsApp e grupo exclusivo dos Caveiras. O Gaujo ajusta o treino semanalmente com base na sua evolução real — não em suposição. <strong>Método não depende de presença física.</strong></p></div>
+        <div class="fq-a"><p class="fq-ai">Sim, 100% online. Diagnóstico, prescrição e acompanhamento pelo WhatsApp e grupo exclusivo das Caveiras. O Gaujo ajusta o treino semanalmente com base na sua evolução real — não em suposição. <strong>Método não depende de presença física.</strong></p></div>
       </div>
       <div class="fq">
         <div class="fq-h"><span class="fq-txt">Preciso ter experiência na academia para entrar?</span><span class="fq-ico">+</span></div>
-        <div class="fq-a"><p class="fq-ai">Não. O diagnóstico individual mapeia exatamente onde você está. Iniciante parte do zero correto. Quem já treina há anos, o diagnóstico identifica o que está travando. <strong>O que importa é disposição real e comprometimento com o processo.</strong></p></div>
+        <div class="fq-a"><p class="fq-ai">O Caveira Team foi desenhado para quem já treina — quem já sentiu na pele o que é se esforçar e não enxergar resultado. O diagnóstico individual identifica exatamente o que está te travando hoje. <strong>O que importa é disposição real e comprometimento com o processo.</strong></p></div>
       </div>
       <div class="fq">
         <div class="fq-h"><span class="fq-txt">Qual a diferença real pro personal online comum?</span><span class="fq-ico">+</span></div>
-        <div class="fq-a"><p class="fq-ai">Personal online comum entrega planilha de gaveta. O Caveira Team começa com diagnóstico postural real, prescreve com base em tensão mecânica e progressão de carga e ajusta semanalmente. <strong>É a diferença entre um produto genérico e um método incomparável.</strong> Você não consegue comparar por preço o que não tem comparação.</p></div>
+        <div class="fq-a"><p class="fq-ai">Personal online comum entrega planilha de gaveta. O Caveira Team começa com diagnóstico postural real, prescreve com base em tensão mecânica e progressão de carga e ajusta semanalmente. <strong>É a diferença entre um produto genérico e um método autoral.</strong> Você não consegue comparar por preço o que não tem comparação.</p></div>
       </div>
       <div class="fq">
         <div class="fq-h"><span class="fq-txt">Meu parceiro e eu podemos entrar juntos?</span><span class="fq-ico">+</span></div>
@@ -835,13 +866,26 @@ footer{background:rgba(8,8,8,.92);border-top:1px solid var(--k4);backdrop-filter
       </div>
       <div class="fq">
         <div class="fq-h"><span class="fq-txt">Por que vagas limitadas?</span><span class="fq-ico">+</span></div>
-        <div class="fq-a"><p class="fq-ai">O Gaujo não aceita qualquer aluno — aceita o aluno certo. Acompanhamento real tem limite de capacidade. <strong>Quem entra, entra pra resultado — não pra número.</strong> É isso que garante o nível de entrega que o método exige.</p></div>
+        <div class="fq-a"><p class="fq-ai">Acompanhamento real tem limite de capacidade. O Gaujo opera o método com atenção individual — não vende em escala. <strong>Quem entra, entra pra resultado — não pra número.</strong> É isso que garante o nível de entrega que o Método Caveira exige.</p></div>
       </div>
       <div class="fq">
         <div class="fq-h"><span class="fq-txt">Meu objetivo é emagrecer. O método funciona?</span><span class="fq-ico">+</span></div>
-        <div class="fq-a"><p class="fq-ai">Sim. Tensão mecânica gera hipertrofia — e mais músculo significa metabolismo mais rápido e emagrecimento real. Quem treina sem controlar carga perde músculo junto com gordura e fica com corpo "mole". <strong>O Método Caveira resolve isso na raiz: constrói músculo, acelera metabolismo, emagrece com consistência.</strong></p><p class="mc-tagline" style="margin-top:12px;">Resultados de atletas em pessoas normais</p></div>
+        <div class="fq-a"><p class="fq-ai">Sim. Tensão mecânica gera hipertrofia — e mais músculo significa metabolismo mais rápido e emagrecimento real. Quem treina sem controlar carga perde músculo junto com gordura e fica com corpo "mole". <strong>O Método Caveira resolve isso na raiz: constrói músculo, acelera metabolismo, emagrece com consistência.</strong></p><p class="mc-tagline" style="margin-top:12px;">Método Caveira · Desperte o Caos</p></div>
+      </div>
+      <div class="fq">
+        <div class="fq-h"><span class="fq-txt">Como entro? Como funciona o processo?</span><span class="fq-ico">+</span></div>
+        <div class="fq-a"><p class="fq-ai">Toda Caveira passa por conversa direta no WhatsApp antes de entrar. O Gaujo entende teu momento, tua dor específica e teu objetivo — e te recomenda o plano que faz sentido pro teu perfil. <strong>Não vendemos pacotes prontos pra quem chegou ontem. Vendemos método pra quem decidiu atravessar.</strong> Clique em qualquer botão de "Atravessar a Porta" e a conversa começa.</p></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ══ PORTA TRIBAL ══ -->
+<section class="porta-s">
+  <div class="porta-inner rv">
+    <span class="porta-symbol">🏴‍☠️</span>
+    <h2 class="porta-h">A porta está aberta.<br><span>Mas não atravessa qualquer uma.</span></h2>
+    <p class="porta-p">A Caveira Team não tenta ser pra todas. É pra mulher que treina há anos, cansou de treino genérico, e está pronta pra encarar verdade dura e método real. <strong>Se você se reconheceu em cada linha desse site, a próxima conversa é por WhatsApp. Direto comigo.</strong></p>
   </div>
 </section>
 
@@ -862,32 +906,39 @@ footer{background:rgba(8,8,8,.92);border-top:1px solid var(--k4);backdrop-filter
     <div class="modal-title">SUA JORNADA DE TRANSFORMAÇÃO</div>
     <div class="modal-step">
       <div class="modal-step-num">01</div>
-      <div class="modal-step-title">DIAGNÓSTICO POSTURAL COMPLETO</div>
-      <p class="modal-step-desc">Você passa por avaliação postural e análise de contexto. Identificamos os padrões posturais alterados que estão travando sua evolução na academia. Sem diagnóstico, não há prescrição inteligente.</p>
+      <div class="modal-step-title">CONVERSA DIRETA NO WHATSAPP</div>
+      <p class="modal-step-desc">Você inicia a conversa comigo pelo WhatsApp. Antes de qualquer prescrição, eu entendo teu momento, tua rotina, tua dor específica e teu objetivo real. <strong>Aqui não tem checkout cego — tem conversa.</strong></p>
     </div>
     <hr class="modal-divider">
     <div class="modal-step">
       <div class="modal-step-num">02</div>
-      <div class="modal-step-title">PRESCRIÇÃO ESTRATÉGICA INDIVIDUALIZADA</div>
-      <p class="modal-step-desc">Com tudo em mãos, entendemos sua rotina, preferências e objetivos. Cada série, cada descanso, cada carga tem uma razão científica. O treino é construído apenas para você.</p>
+      <div class="modal-step-title">RECOMENDAÇÃO DO PLANO CERTO</div>
+      <p class="modal-step-desc">Com base na conversa, eu te indico o plano que faz sentido pro teu perfil — Start (2 meses), Construção (4 meses) ou Caveira (6 meses). <strong>Você não escolhe entre opções. Você recebe a recomendação técnica.</strong></p>
     </div>
     <hr class="modal-divider">
     <div class="modal-step">
       <div class="modal-step-num">03</div>
-      <div class="modal-step-title">ENTREGA E ACOMPANHAMENTO REAL</div>
-      <p class="modal-step-desc">Seu protocolo completo é entregue em até 72 horas. Mas não termina aí. Você recebe orientação direta, suporte e refinamento técnico contínuo do Gaujo. Aqui você não treina sozinha.</p>
+      <div class="modal-step-title">DIAGNÓSTICO POSTURAL E PRESCRIÇÃO</div>
+      <p class="modal-step-desc">Adesão confirmada, começa o diagnóstico postural completo e a montagem do teu protocolo individualizado. Em até 72h tua prescrição está pronta. <strong>A partir daí, acompanhamento real, ajustes semanais, e a tribo das Caveiras ao teu lado.</strong></p>
     </div>
-    <div class="modal-call">ESTÁ PRONTA PARA DESPERTAR O CAOS?</div>
-    <a href="https://app.primecoaching.com.br/checkout/265" class="btn-cta btn-cta-full" target="_blank" rel="noopener noreferrer">FINALIZAR ADESÃO AO CAVEIRA TEAM</a>
+    <div class="modal-call">A PORTA ABRE PELA CONVERSA. ATRAVESSA?</div>
+    <a href="https://wa.me/5581994998661?text=M%C3%89TODO%20-%20vi%20o%20passo%20a%20passo%20e%20quero%20atravessar" class="btn-cta btn-cta-full" target="_blank" rel="noopener noreferrer">💀 ATRAVESSAR A PORTA</a>
   </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="f-logo"><span>CAVEIRA TEAM 💀</span></div>
-  <div class="f-links">
+  <div class="f-logo">
+    <span class="f-brand">CAVEIRA TEAM 💀</span>
+    <span class="f-tagline">Método Caveira · Consultoria Premium</span>
+  </div>
+  <div class="f-middle">
+    <span class="f-slogan">DESPERTE O CAOS</span>
+    <span class="f-handle">@gaujocaveira</span>
+  </div>
+  <div class="f-right">
     <a href="#metodo" class="f-link">Método</a>
-    <span class="f-copy">@gaujocaveira · Método Caveira</span>
+    <a href="https://wa.me/5581994998661?text=SITE%20-%20Caveira%2C%20quero%20iniciar%20meu%20diagn%C3%B3stico" class="f-link" target="_blank" rel="noopener noreferrer">Atravessar</a>
   </div>
 </footer>
 
